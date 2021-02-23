@@ -26,13 +26,14 @@ router.get('/', (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
   // endpoint functionality
   console.log('Adding new pin to DB');
-  const queryText = `INSERT INTO "pin" ("team", "league", "year", "image_url", "tradable", "user_id")
-  VALUES ($1, $2, $3, $4, $5, $6 ${req.user.id});`;
+  const queryText = `INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
+  VALUES ($1, $2, $3, $4, $5, $6);`;
 
-  pool.query(queryText, [req.body.itemDescription, req.body.itemUrl]).then(() => {
-    console.log('Item added to shelf successfully');
+  pool.query(queryText, [req.body.team, req.body.league, req.body.year, 
+    req.body.image_url, req.body.tradeable, req.body.user_id]).then(() => {
+    console.log('Pin added successfully');
     res.sendStatus(201);
-  }).catch(err => {
+  }).catch(error => {
     console.log('Error in post', error);
     res.sendStatus(500);
   });
