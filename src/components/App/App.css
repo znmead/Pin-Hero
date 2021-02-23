@@ -37,6 +37,7 @@ Button
   background-color: #282c34;
   color: #f8f8f8;
   font-size: 1.1rem;
+  font-family: monospace;
   outline: 0;
   cursor: pointer;
 }
