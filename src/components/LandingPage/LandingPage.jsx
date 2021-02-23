@@ -20,35 +20,56 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+            import this
+
+            The Zen of Python, by Tim Peters
+
+            <hr></hr>
+
+            Beautiful is better than ugly.
+            Explicit is better than implicit.
+            Simple is better than complex.
+            Complex is better than complicated.
+            Flat is better than nested.
+            Sparse is better than dense.
+            Readability counts.
+            Special cases aren't special enough to break the rules.
+            Although practicality beats purity.
+            Errors should never pass silently.
+            Unless explicitly silenced.
+            In the face of ambiguity, refuse the temptation to guess.
+            There should be one-- and preferably only one --obvious way to do it.
+            Although that way may not be obvious at first unless you're Dutch.
+            Now is better than never.
+            Although never is often better than *right* now.
+            If the implementation is hard to explain, it's a bad idea.
+            If the implementation is easy to explain, it may be a good idea.
+            Namespaces are one honking great idea -- let's do more of those!
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
-          </p>
+            Zen Of Javascript, by Clayton Gulick
 
+            <hr></hr>
+ 
+            Build functionality, not architecture.
+            Build small things that work
+            and glue them together to make big things.
+            Clear is better than clever,
+            but graceful beats both.
+            Comments are good, even if you're Dutch.
+            Asychronous is better than synchronous
+            except for when it isn't
+            but your code should work on both.
+            Convention is better than definition,
+            if you have good docs.
+            Keep it loose, but build good tests.
+            
+            
+          </p>
+          <hr></hr>
           <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
+          "I am faster than 80% of all snakes." - Dwight Shrute
           </p>
         </div>
         <div className="grid-col grid-col_4">
