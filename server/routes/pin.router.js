@@ -5,9 +5,8 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-/**
- * GET route template
- */
+// GET router working in POSTMAN
+// GETs a list of all pins from db
 router.get('/', (req, res) => {
   let query = 'SELECT * FROM "pin";'
   pool
@@ -20,16 +19,14 @@ router.get('/', (req, res) => {
 });
 
 
-/**
- * POST route template
- */
+// POST router working in POSTMAN
+// Adds new pins to DB
 router.post('/', rejectUnauthenticated, (req, res) => {
-  // endpoint functionality
   console.log('Adding new pin to DB');
-  const queryText = `INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
+  const query = `INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
   VALUES ($1, $2, $3, $4, $5, $6);`;
 
-  pool.query(queryText, [req.body.team, req.body.league, req.body.year, 
+  pool.query(query, [req.body.team, req.body.league, req.body.year, 
     req.body.image_url, req.body.tradeable, req.body.user_id]).then(() => {
     console.log('Pin added successfully');
     res.sendStatus(201);
@@ -38,5 +35,25 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     res.sendStatus(500);
   });
 });
+
+
+// TODO: PUT Router
+router.put('/tradeable/:id', rejectUnauthenticated, (req, res) => {
+  let newTrade = req.body.tradeable;
+  console.log('Updating pin to DB', newTrade );
+  let id = req.params.id;
+  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;
+  pool.query(query, [id]).then(() => {
+    console.log('Pin added successfully');
+    res.sendStatus(200);
+  }).catch(error => {
+    console.log('Error in post', error);
+    res.sendStatus(500);
+  });
+});
+
+
+
+// TODO: DELETE Router
 
 module.exports = router;
