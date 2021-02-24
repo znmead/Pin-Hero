@@ -55,9 +55,18 @@ router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
 
 
 
-// TODO: DELETE Router
-
-
+// TODO: UPDATE w/rejectUnauthenticated, TEST MORE IN POSTMAN
+router.delete('/:id',  rejectUnauthenticated, (req, res) => {
+  console.log('deleting pin with id of:', req.params.id);
+  const queryText = `DELETE FROM "pin" WHERE "id"=$1;`;
+  pool.query(queryText, [req.params.id])
+  .then((result) => {
+    res.sendStatus(204)
+  }).catch ((error) => {
+    console.log('error deleting pin', error);
+  })
+  // endpoint functionality
+});
 
 
 module.exports = router;
