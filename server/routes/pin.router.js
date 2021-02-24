@@ -37,7 +37,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 
-// TODO: PUT Router
+// PUT Router
 router.put('/tradeable/:id', rejectUnauthenticated, (req, res) => {
   let newTrade = req.body.tradeable;
   console.log('Updating pin to DB', newTrade );
@@ -55,5 +55,8 @@ router.put('/tradeable/:id', rejectUnauthenticated, (req, res) => {
 
 
 // TODO: DELETE Router
+
+
+
 
 module.exports = router;
