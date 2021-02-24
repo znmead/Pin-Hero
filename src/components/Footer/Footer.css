@@ -2,4 +2,11 @@ footer {
   margin-top: 80px;
   padding: 20px;
   text-align: center;
+  font-family: monospace;
+  background-color: #282c34;
+  color: #61dafb;
+}
+
+.fa-linkedin{
+  color: #61dafb;
 }
