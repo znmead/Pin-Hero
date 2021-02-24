@@ -19,6 +19,25 @@ CREATE TABLE "pin" (
 	"user_id" INTEGER REFERENCES "user"
 );
 
+INSERT INTO "user" ("username", "password")
+VALUES('Dwight', 'bigtuna');
+
+INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
+VALUES('A Black', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
+('A Blue', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
+('A Green', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
+('A White', 'Squirt', '2021', 'https://hockeypin.com', FALSE, 1),
+('A Pink', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1);
+
+SELECT * FROM "user";
+SELECT * FROM "pin";
+
+
+
+
+
+
+
 -- NOTES / EXAMPLES
 INSERT INTO "songs" ("id", "rank", "artist", "track", "published")
 VALUES(1, 357, 'Doin Time', 'Sublime', '1-1-1996');
