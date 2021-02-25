@@ -13,6 +13,6 @@ function Footer() {
     </a>
     <hr></hr>
   </footer>;
-}
+};
 
 export default Footer;
