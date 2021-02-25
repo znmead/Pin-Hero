@@ -1,4 +1,4 @@
-const pinReducer = (state = [], action) => {
+const pins = (state = [], action) => {
     switch (action.type) {
       case 'SET_PIN':
         return action.payload;
@@ -9,6 +9,6 @@ const pinReducer = (state = [], action) => {
     }
   };
   
-  // user will be on the redux state at:
-  // state.user
-  export default pinReducer;
+  // pin will be on the redux state at:
+  // state.pin
+  export default pins;

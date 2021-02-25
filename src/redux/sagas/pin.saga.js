@@ -18,7 +18,7 @@ function* fetchPins(action) {
 };
 
 // POST new pin to hockey_pins db
-function* addItem(action) {
+function* addPin(action) {
     try {
         yield axios.post('/api/pin', action.payload);
         yield put({ type: 'FETCH_PIN' })
@@ -30,7 +30,7 @@ function* addItem(action) {
 // TODO: function* editPin(action)
 
 // DELETE pin from hockey_pins db
-function deletePin(action) {
+function* deletePin(action) {
     try {
         yield axios.delete(`/api/pin/${action.payload}`);
         yield put({ type: 'FETCH_ITEM' });
