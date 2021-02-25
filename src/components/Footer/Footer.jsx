@@ -7,9 +7,11 @@ import './Footer.css';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer><hr></hr>&copy;  2021 Zach Mead &nbsp; 
+  return <footer>
+    <hr></hr>
+    &copy; Zach Mead 2021 &nbsp;
     <a href="https://www.linkedin.com/in/znmead/">
-    <i className="fab fa-linkedin"></i>
+      <i className="fab fa-linkedin"></i>
     </a>
     <hr></hr>
   </footer>;

@@ -1,27 +1,38 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import swal from 'sweetalert';
 
 
 
-// let [pins, setPins] = useState([]);
-
 function UserPage() {
-
-  const dispatch = useDispatch();
-
-  // setPins([...pins]);
-  useEffect(() => {
-    dispatch({ type: 'FETCH_PIN' });
-    
-  }, []);
-
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+  let [addPinToggle, setPinToggle] = useState(false);
   const user = useSelector((store) => store.user);
   const pins = useSelector((store) => store.pins);
-  console.log('user, pins',pins);
+  const dispatch = useDispatch();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: 'ADD_PIN', payload: store.addPin });
+    setPinToggle(false);
+  };
+  
+  const deletePin = (id) => {
+    dispatch({ type: 'DELETE_PIN', payload: id })
+  };
+
+  
+  
+  
+  
+  
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PIN' });
+  }, []);
+
+  console.log('user, pins',user, pins);
 
   return (
     <div className="container">
@@ -32,8 +43,13 @@ function UserPage() {
         <ul>
           {pins.map(pin => {
             return (
-              <li key={pin.id}>{pin.team}</li>
-            )
+              <li key={pin.id}> 
+              {pin.id} {pin.team} 
+              
+              <button type="delete" 
+              value={pin.id} 
+              onClick={() => deletePin()}>Delete</button></li>
+              )
           })}
         </ul>
       </div>
