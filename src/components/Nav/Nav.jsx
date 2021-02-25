@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -20,12 +20,12 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title"><i class="fas fa-dragon">
+        <h2 className="nav-title">
+          <i class="fas fa-dragon">
           </i>&nbsp;<i class="fas fa-hockey-puck"></i>
-           &nbsp;Pin Zero <i class="fas fa-hockey-puck"></i> <i class="fas fa-dragon fa-flip-horizontal"></i> 
-           
-           </h2> 
-        
+           &nbsp;Pin Zero <i class="fas fa-hockey-puck"></i> <i class="fas fa-dragon fa-flip-horizontal"></i>
+        </h2>
+
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>

@@ -22,7 +22,7 @@ function UserPage() {
     dispatch({ type: 'DELETE_PIN', payload: id })
   };
 
-  
+
   
   
   
@@ -45,7 +45,7 @@ function UserPage() {
             return (
               <li key={pin.id}> 
               {pin.id} {pin.team} 
-              
+              &nbsp;
               <button type="delete" 
               value={pin.id} 
               onClick={() => deletePin()}>Delete</button></li>

@@ -10,11 +10,9 @@ function Footer() {
   return <footer>
     <hr></hr>
     <a href="https://github.com/znmead/eda-solo-project-2021">
-      <i class="fab fa-github-square"></i>
+      <i className="fab fa-github-square"></i>
     </a>
-
-    &nbsp;&copy; Zach Mead 2021&nbsp;
-
+    &nbsp;&copy; Zach Mead 20&#x0338;21&nbsp;
     <a href="https://www.linkedin.com/in/znmead/">
       <i className="fab fa-linkedin"></i>
     </a>

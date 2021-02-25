@@ -1,14 +1,18 @@
 footer {
+  display: flex;
   margin-top: 175px;
   padding: 20px;
   text-align: center;
   font-family: monospace;
+  font-size: 17.5px;
   background-color: #282c34;
   color: #61dafb;
+
   
 }
 
 .fab {
   color: #61dafb;
+  font-size: 25px;
 }
 
