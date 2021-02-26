@@ -21,9 +21,9 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-          <i class="fas fa-dragon">
-          </i>&nbsp;<i class="fas fa-hockey-puck"></i>
-           &nbsp;Pin Zero <i class="fas fa-hockey-puck"></i> <i class="fas fa-dragon fa-flip-horizontal"></i>
+          <i className="fas fa-dragon">
+          </i>&nbsp;<i className="fas fa-hockey-puck"></i>
+           &nbsp;Pin Zero <i className="fas fa-hockey-puck"></i> <i className="fas fa-dragon fa-flip-horizontal"></i>
         </h2>
 
       </Link>

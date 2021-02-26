@@ -6,8 +6,14 @@
 CREATE TABLE "user" (
     "id" SERIAL PRIMARY KEY,
     "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
+    "password" VARCHAR (1000) NOT NULL,
+    "first_name" VARCHAR (80),
+    "last_name" VARCHAR (80),
+    "player_number" INTEGER,
+    "team" VARCHAR (255),
+    "league" VARCHAR (255)
 );
+
 
 CREATE TABLE "pin" (
 	"id" SERIAL PRIMARY KEY,
