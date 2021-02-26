@@ -1,0 +1,4 @@
+.pins {
+    display : flex;
+    flex-wrap: wrap;
+}
