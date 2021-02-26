@@ -1,18 +1,26 @@
-const addPin = (state = { itemDescription: '', itemUrl: '' }, action) => {
+const addPinReducer = (state = { team: '', league: '', year:'', image_url:'', tradeable:'', user_id:'' }, action) => {
     let newState = { ...state };
 
     switch (action.type) {
-        case 'SET_ITEM_DESC':
-            newState.itemDescription = action.payload;
+        case 'SET_PIN_TEAM':
+            newState.pinTeam = action.payload;
             return newState;
-        case 'SET_ITEM_URL':
-            newState.itemUrl = action.payload;
+        case 'SET_PIN_LEAGUE':
+            newState.pinLeague = action.payload;
             return newState;
-        case 'RESET_ADD_ITEM':
-            return { itemDescription: '', itemUrl: '' };
+        case 'SET_PIN_YEAR':
+            newState.pinYear = action.payload;
+        case 'SET_PIN_URL':
+            newState.pinUrl = action.payload;
+        case 'SET_PIN_TRADEABLE':
+            newState.pinTradeable = action.payload;
+        case 'SET_PIN_USERID': 
+            newState.userID = action.payload;
+        case 'RESET_ADD_PIN':
+            return {team: '', league: '', year:'', image_url:'', tradeable:'', user_id:'' };
         default:
             return state;
     };
 };
 
-export default addItemReducer;
+export default addPinReducer;
