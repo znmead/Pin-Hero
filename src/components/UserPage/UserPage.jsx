@@ -24,7 +24,7 @@ function UserPage() {
 
   const handleDelete = (id) => {
     dispatch({ type: 'DELETE_PIN', payload: id })
-    
+    dispatch({ type: 'FETCH_PIN' });
   };
 
   const handleTeamChange = (e) => {
@@ -53,7 +53,7 @@ function UserPage() {
       <p>Jersey Number: {user.player_number}</p>
       <p>Your pins are: </p>
 
-      <div className="pinTable">
+      <table className="pinTable">
       <thead>
           <tr>
             <th>Description</th>
@@ -61,7 +61,6 @@ function UserPage() {
             <th>Actions</th>
           </tr>
         </thead>
-        <table>
           <tbody>
             <tr>
               <td>Pins:</td>
@@ -85,8 +84,7 @@ function UserPage() {
               <td></td>
             </tr>
           </tbody>
-        </table>
-      </div>
+      </table>
       <div className="pins">
         <ul>
           {pins.map(pin => {
