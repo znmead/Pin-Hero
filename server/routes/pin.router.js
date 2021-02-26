@@ -24,9 +24,9 @@ router.get('/', (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('Adding new pin to DB');
   const query = `INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
-  VALUES ($1, $2, $3, $4, $5, $6);`;
+  VALUES ($1, $2, $3, $4, $5, ${req.user.id});`;
   pool.query(query, [req.body.team, req.body.league, req.body.year, 
-    req.body.image_url, req.body.tradeable, req.body.user_id]).then(() => {
+    req.body.image_url, req.body.tradeable]).then(() => {
     console.log('Pin added successfully');
     res.sendStatus(201);
   }).catch(error => {
@@ -57,7 +57,7 @@ router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
 
 // TODO: UPDATE w/rejectUnauthenticated, TEST MORE IN POSTMAN
 router.delete('/:id',  rejectUnauthenticated, (req, res) => {
-  console.log('deleting pin with id of:', req.params.id);
+  console.log('Deleting pin with id of:', req.params.id);
   const queryText = `DELETE FROM "pin" WHERE "id"=$1;`;
   pool.query(queryText, [req.params.id])
   .then((result) => {
