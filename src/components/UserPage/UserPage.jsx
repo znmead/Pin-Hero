@@ -5,11 +5,12 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import swal from 'sweetalert';
 
 function UserPage() {
   let [addPinToggle, setPinToggle] = useState(false);
+  let [updatePinToggle, setUpdatePinToggle] = useState(false);
+
   const user = useSelector((store) => store.user);
   const pins = useSelector((store) => store.pins);
   const store = useReduxStore();
@@ -21,6 +22,12 @@ function UserPage() {
     dispatch({ type: 'ADD_PIN', payload: store.addPinReducer });
     setPinToggle(false);
   };
+
+  const handleTradeableUpdate = (e) => {
+
+    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: store.updatePinReducer })
+    dispatch({ type: 'FETCH_PIN' });
+  }
 
   const handleDelete = (id) => {
     dispatch({ type: 'DELETE_PIN', payload: id })
@@ -57,7 +64,7 @@ function UserPage() {
   }, []);
 
   console.log('user, pins', user, pins);
-
+  // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
@@ -103,7 +110,26 @@ function UserPage() {
               <li key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
-                <button onClick={() => handleDelete(pin.id)}>Delete</button></li>
+                <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
+                {updatePinToggle ? (
+                  <>
+                    <form onSubmit={handleTradeableUpdate}>
+                      <label htmlFor="input-tradeable">Tradeable Status? </label>
+                      <input
+                        type="text"
+                        id="input-tradeable"
+                        value={store.updatePinReducer.pinTradeable}
+                        onChange={handleTradeableChange}
+                        required
+                      />
+                      <button onClick={() => handleTradeableUpdate(pin.id)}>Update trade status</button>
+                    </form>
+                  </>
+                ) : (
+                    <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
+                  )}
+
+              </li>
             )
           })}
         </ul>
@@ -178,3 +204,22 @@ function UserPage() {
 
 // this allows us to use <App /> in index.js
 export default UserPage;
+
+// {updatePinToggle ? (
+//   <>
+//   <form onSubmit={handleTradeableUpdate}>
+//     <label htmlFor="input-tradeable">Tradeable Status? </label>
+//     <input
+//     type="text"
+//     id="input-tradeable"
+//     value={store.updatePinReducer.pinTradeable}
+//     onChange={handleSubmit}
+//     required
+//     />
+//     <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
+//     </form>
+//   </>
+// ) : (
+//     <button onClick={() => setPinToggle(true)}>Update Trade Status</button>
+//   )}
+

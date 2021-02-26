@@ -43,7 +43,7 @@ router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
   let newTrade = req.body.tradeable;
   let id = req.params.id;
   console.log(`User ${req.body.user_id} updating pin ${req.body.team} to DB`, newTrade );
-  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "user_cd id"=$1`;
+  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "user_id"=$1`;
   pool.query(query, [id]).then(() => {
     console.log('Trade status updated successfully');
     res.sendStatus(200);
