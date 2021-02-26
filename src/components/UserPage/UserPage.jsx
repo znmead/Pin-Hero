@@ -24,10 +24,11 @@ function UserPage() {
 
   const handleDelete = (id) => {
     dispatch({ type: 'DELETE_PIN', payload: id })
+    
   };
 
   const handleTeamChange = (e) => {
-    dispatch({ type:'SET_USER_TEAM', payload: e.target.value });
+    dispatch({ type: 'SET_USER_TEAM', payload: e.target.value });
   };
 
   const handleLeagueChange = (e) => {
@@ -52,31 +53,40 @@ function UserPage() {
       <p>Jersey Number: {user.player_number}</p>
       <p>Your pins are: </p>
 
-      <table>
-        <tbody>
+      <div className="pinTable">
+      <thead>
           <tr>
-            <td>Pins:</td>
-            <td>{pins.id}</td>
+            <th>Description</th>
+            <th>URL</th>
+            <th>Actions</th>
           </tr>
-          <tr>
-            <td>Image:</td>
-            <td>{pins.team}</td>
-            <td><img src={pins.image_url} alt={pins.team} /></td>
-          </tr>
-          <tr>
-            <td>Year:</td>
-            <td>{pins.year}</td>
-          </tr>
-          <tr>
-            <td>League:</td>
-            <td>{pins.league}</td>
-          </tr>
-          <tr>
-            <td>Tradeable?</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+        </thead>
+        <table>
+          <tbody>
+            <tr>
+              <td>Pins:</td>
+              <td>{pins.id}</td>
+            </tr>
+            <tr>
+              <td>Image:</td>
+              <td>{pins.team}</td>
+              <td><img src={pins.image_url} alt={pins.team} /></td>
+            </tr>
+            <tr>
+              <td>Year:</td>
+              <td>{pins.year}</td>
+            </tr>
+            <tr>
+              <td>League:</td>
+              <td>{pins.league}</td>
+            </tr>
+            <tr>
+              <td>Tradeable?</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div className="pins">
         <ul>
           {pins.map(pin => {
@@ -84,9 +94,7 @@ function UserPage() {
               <li key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
-                <button type="delete"
-                  value={pin.id}
-                  onClick={() => deletePin()}>Delete</button></li>
+                <button onClick={() => handleDelete(pin.id)}>Delete</button></li>
             )
           })}
         </ul>

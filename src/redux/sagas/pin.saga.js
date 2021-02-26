@@ -21,7 +21,8 @@ function* fetchPins(action) {
 function* addPin(action) {
     try {
         yield axios.post('/api/pin', action.payload);
-        yield put({ type: 'FETCH_PIN' })
+        yield put({ type: 'RESET_ADD_PIN' });
+        yield put({ type: 'FETCH_PIN' });
     } catch (error) {
         console.log('Error adding pin', error);
     }
@@ -38,14 +39,6 @@ function* deletePin(action) {
         console.log('Error deleting pin', error);
     }
 };
-
-
-
-
-
-
-
-
 
 function* pinSaga() {
     yield takeLatest('FETCH_PIN', fetchPins);
