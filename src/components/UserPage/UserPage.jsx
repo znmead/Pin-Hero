@@ -110,24 +110,25 @@ function UserPage() {
               <li key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
+
                 <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
                 {updatePinToggle ? (
-                  <>
-                    <form onSubmit={handleTradeableUpdate}>
-                      <label htmlFor="input-tradeable">Tradeable Status? </label>
-                      <input
-                        type="text"
-                        id="input-tradeable"
-                        value={store.updatePinReducer.pinTradeable}
-                        onChange={handleTradeableChange}
-                        required
-                      />
-                      <button onClick={() => handleTradeableUpdate(pin.id)}>Update trade status</button>
-                    </form>
-                  </>
-                ) : (
-                    <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
-                  )}
+          <>
+            <form onSubmit={handleTradeableUpdate}>
+              <label htmlFor="input-tradeable">Tradeable Status? </label>
+              <input
+                type="text"
+                id="input-tradeable"
+                value={store.updatePinReducer.pinTradeable}
+                onChange={handleTradeableChange}
+                required
+              />
+              <button type="submit">Save Pin </button>
+            </form>
+          </>
+        ) : (
+            <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
+          )}
 
               </li>
             )
@@ -141,7 +142,7 @@ function UserPage() {
               <input
                 type="number"
                 id="input-year"
-                value={store.addPinReducer.pinYear}
+                value={store.pins.year}
                 onChange={handleYearChange}
                 required
               />
@@ -150,7 +151,7 @@ function UserPage() {
               <input
                 type="text"
                 id="input-team"
-                value={store.addPinReducer.pinTeam}
+                value={store.pins.team}
                 onChange={handleTeamChange}
                 required
               />
@@ -159,7 +160,7 @@ function UserPage() {
               <input
                 type="text"
                 id="input-league"
-                value={store.addPinReducer.pinLeague}
+                value={store.pins.league}
                 onChange={handleLeagueChange}
                 required
               />
@@ -168,7 +169,7 @@ function UserPage() {
               <input
                 type="text"
                 id="input-image_url"
-                value={store.addPinReducer.pinUrl}
+                value={store.pins.image_url}
                 onChange={handleUrlChange}
                 required
               />
@@ -177,7 +178,7 @@ function UserPage() {
               <input
                 type="text"
                 id="input-tradeable"
-                value={store.addPinReducer.pinTradeable}
+                value={store.pins.tradeable}
                 onChange={handleTradeableChange}
                 required
               />

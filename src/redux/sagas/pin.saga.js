@@ -26,12 +26,13 @@ function* addPin(action) {
     } catch (error) {
         console.log('Error adding pin', error);
     }
+    console.log(action.payload)
 };
 
 // PUT pin tradeable status
 function* updatePin(action) {
     try {
-        yield axios.post('/api/pin/tradeable/', action.payload);
+        yield axios.post(`/api/pin/tradeable/${action.payload}`);
         yield put({ type: 'UPDATE_PIN_TRADEABLE' });
         yield put({ type: 'FETCH_PIN' });
     } catch (error) {
