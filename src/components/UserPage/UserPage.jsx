@@ -52,38 +52,32 @@ function UserPage() {
       <p>League: {user.league}</p>
       <p>Jersey Number: {user.player_number}</p>
       <p>Your pins are: </p>
-
       <table className="pinTable">
-      <thead>
+        <thead>
           <tr>
-            <th>Description</th>
-            <th>URL</th>
-            <th>Actions</th>
+            <th>ID</th>
+            <th>Year</th>
+            <th>Team</th>
+            <th>League</th>
+            <th>Up for trade?</th>
+            <th>Belongs to user </th>
+
           </tr>
         </thead>
-          <tbody>
-            <tr>
-              <td>Pins:</td>
-              <td>{pins.id}</td>
-            </tr>
-            <tr>
-              <td>Image:</td>
-              <td>{pins.team}</td>
-              <td><img src={pins.image_url} alt={pins.team} /></td>
-            </tr>
-            <tr>
-              <td>Year:</td>
-              <td>{pins.year}</td>
-            </tr>
-            <tr>
-              <td>League:</td>
-              <td>{pins.league}</td>
-            </tr>
-            <tr>
-              <td>Tradeable?</td>
-              <td></td>
-            </tr>
-          </tbody>
+        <tbody>
+          {pins.map((pin, i) => {
+            return (
+              <tr key={i}>
+                <td>{pin.id}</td>
+                <td>{pin.year}</td>
+                <td>{pin.team}</td>
+                <td>{pin.league}</td>
+                <td>{pin.tradeable.toString()}</td>
+                <td>{user.first_name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <div className="pins">
         <ul>

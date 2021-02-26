@@ -34,7 +34,7 @@ function* addPin(action) {
 function* deletePin(action) {
     try {
         yield axios.delete(`/api/pin/${action.payload}`);
-        yield put({ type: 'FETCH_ITEM' });
+        yield put({ type: 'FETCH_PIN' });
     } catch (error) {
         console.log('Error deleting pin', error);
     }
