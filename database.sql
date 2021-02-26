@@ -14,6 +14,10 @@ CREATE TABLE "user" (
     "league" VARCHAR (255)
 );
 
+UPDATE "user"
+SET "first_name"='Dwight', "last_name"='Shrute', "player_number"=23, 
+"team"='A Bears', "league"='Galactica';
+
 
 CREATE TABLE "pin" (
 	"id" SERIAL PRIMARY KEY,

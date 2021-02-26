@@ -1,9 +1,11 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import useReduxStore from "../../hooks/useReduxStore";
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import swal from 'sweetalert';
 
 function UserPage() {
