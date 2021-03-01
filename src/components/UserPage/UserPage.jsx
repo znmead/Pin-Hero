@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import './UserPage.css';
 import swal from 'sweetalert';
 
 function UserPage() {
@@ -22,7 +23,7 @@ function UserPage() {
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('');
   const [image_url, setImage_Url] = useState('');
-  const [tradeable, setTradeable] = useState('[]');
+  const [tradeable, setTradeable] = useState('');
 
 
   const handleSubmit = (event) => {

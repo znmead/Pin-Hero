@@ -20,5 +20,3 @@ export default function* rootSaga() {
   ]);
 }
 
-// TODO: PIN SAGA
-// 

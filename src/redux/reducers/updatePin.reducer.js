@@ -10,5 +10,4 @@ const updatePinReducer = (state = { tradeable:'' }, action) => {
             return state;
     };
 };
-
 export default updatePinReducer;
