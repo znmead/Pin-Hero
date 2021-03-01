@@ -32,7 +32,8 @@ function* addPin(action) {
 // PUT pin tradeable status
 function* updatePin(action) {
     try {
-        yield axios.put(`/api/pin/tradeable/:id`);
+        console.log(action.payload)
+        yield axios.put(`/api/pin/tradeable/${action.payload.id}`, action.payload);
         yield put({ type: 'UPDATE_PIN_TRADEABLE' });
         yield put({ type: 'FETCH_PIN' });
     } catch (error) {

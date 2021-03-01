@@ -50,8 +50,8 @@ function UserPage() {
     dispatch({ type: 'FETCH_PIN' });
   };
 
-  const handleTradeableUpdate = (tradeable) => {
-    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable } })
+  const handleTradeableUpdate = (id) => {
+    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
     dispatch({ type: 'FETCH_PIN' });
   }
 
@@ -82,6 +82,7 @@ function UserPage() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_PIN' });
+    
   }, []);
 
   console.log('user, pins', user, pins);
@@ -134,9 +135,9 @@ function UserPage() {
               <li key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
-
+                
                 <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
-                <button onClick={() => handleTradeableChange(pin.id)}>Toggle Trade Status</button>
+                <button onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
               </li>
             )
           })}
