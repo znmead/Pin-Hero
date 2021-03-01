@@ -43,7 +43,7 @@ function* updatePin(action) {
 // DELETE pin from hockey_pins db
 function* deletePin(action) {
     try {
-        yield axios.delete(`/api/pin/tradeable/:id`);
+        yield axios.delete(`/api/pin/${action.payload}`);
         yield put({ type: 'FETCH_PIN' });
     } catch (error) {
         console.log('Error deleting pin', error);
