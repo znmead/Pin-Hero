@@ -23,24 +23,32 @@ CREATE TABLE "pin" (
 	"id" SERIAL PRIMARY KEY,
 	"team" VARCHAR (80),
 	"league" VARCHAR (80),
-	"year" INTEGER,
+	"year" VARCHAR (4),
 	"image_url" VARCHAR (2083),
-	"tradeable" BOOLEAN,
+	"tradeable" BOOLEAN DEFAULT FALSE,
 	"user_id" INTEGER REFERENCES "user"
 );
 
-INSERT INTO "user" ("username", "password")
-VALUES('Dwight', 'bigtuna');
-
-INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
-VALUES('A Black', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
-('A Blue', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
-('A Green', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1),
-('A White', 'Squirt', '2021', 'https://hockeypin.com', FALSE, 1),
-('A Pink', 'Squirt', '2021', 'https://hockeypin.com', TRUE, 1);
+DROP TABLE "pin"; 
 
 SELECT * FROM "user";
-SELECT * FROM "pin";
+
+INSERT INTO "user"
+VALUES
+(1
+
+SELECT * FROM "pin"; 
+
+UPDATE "pin" SET "tradeable"="true" WHERE "user_id"=$1
+
+
+INSERT INTO "pin" ("team", "league", "year", "image_url", "tradeable", "user_id")
+VALUES ('A Black', 'Squirt', 2021, 'https://hockypin.com', false, 1),
+('A Blue', 'Squirt', 2021, 'https://hockypin.com', false, 1),
+('A Green', 'Squirt', 2021, 'https://hockypin.com', false, 1),
+('A White', 'Squirt', 2021, 'https://hockypin.com', false, 1),
+('A Pink', 'Squirt', 2021, 'https://hockypin.com', false, 1);
+
 
 
 

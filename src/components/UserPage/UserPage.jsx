@@ -27,6 +27,10 @@ function UserPage() {
   const [image_url, setImage_Url] = useState('');
   const [tradeable, setTradeable] = useState('');
 
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PIN' });
+  }, []);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,8 +58,10 @@ function UserPage() {
 
   const handleTradeableUpdate = (id) => {
     dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
-    // dispatch({ type: 'FETCH_PIN' });
+    dispatch({ type: 'FETCH_PIN' });
+    dispatch({ type: 'FETCH_PIN' });
   }
+
 
 
   const handleTeamChange = (e) => {
@@ -81,12 +87,6 @@ function UserPage() {
     const handleUserIdChange = (e) => {
       dispatch({ type: 'SET_PIN_USER_ID', payload: user.id });
     };
-
-
-  useEffect(() => {
-    dispatch({ type: 'FETCH_PIN' });
-    
-  }, []);
 
   console.log('user, pins', user, pins);
   // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
