@@ -40,10 +40,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // PUT router working in POSTMAN
 // Updates tradeable status via http://localhost:5000/api/pin/tradeable/id
 router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
+  console.log(req.body, req.params)
   let newTrade = req.body.tradeable;
   let id = req.params.id;
-  console.log(`User ${req.body.user_id} updating pin ${req.body.team} to DB`, newTrade );
-  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "user_id"=$1`;
+  console.log(`User updating pin ${id} to DB`, newTrade );
+  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;
   pool.query(query, [id]).then(() => {
     console.log('Trade status updated successfully');
     res.sendStatus(200);

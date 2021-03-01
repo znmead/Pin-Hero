@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import './UserPage.css';
 import swal from 'sweetalert';
 import axios from 'axios';
 
@@ -24,7 +25,7 @@ function UserPage() {
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('');
   const [image_url, setImage_Url] = useState('');
-  const [tradeable, setTradeable] = useState(false);
+  const [tradeable, setTradeable] = useState('');
 
 
   const handleSubmit = (event) => {
@@ -51,17 +52,9 @@ function UserPage() {
     dispatch({ type: 'FETCH_PIN' });
   };
 
-  const changeTradeable = (pins) => {
-    const trade = pins.tradeable;
-    axios.put(`/pins/tradeable/${tradeable.id}`, { tradeable: !trade })
-    .then(() => {
-      console.log('Trade status updated successfully');
-      
-    }).catch(error => {
-      console.log('Error in put', error);
-      
-    });
-    dispatch({ type: 'FETCH_PIN' });
+  const handleTradeableUpdate = (id) => {
+    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
+    // dispatch({ type: 'FETCH_PIN' });
   }
 
 
@@ -90,72 +83,73 @@ function UserPage() {
     };
 
 
-    useEffect(() => {
-      dispatch({ type: 'FETCH_PIN' });
-    }, []);
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PIN' });
+    
+  }, []);
 
-    console.log('user, pins', user, pins);
-    // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
-    return (
-      <div className="container">
-        <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
-        <p>Your ID is: {user.id}</p>
-        <p>Change your password: {user.password}</p>
-        <p>First Name: {user.first_name}</p>
-        <p>Last Name: {user.last_name}</p>
-        <p>Team: {user.team}</p>
-        <p>League: {user.league}</p>
-        <p>Jersey Number: {user.player_number}</p>
-        <p>Your pins are: </p>
-        <table className="pinTable">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Year</th>
-              <th>Team</th>
-              <th>League</th>
-              <th>Image Link</th>
-              <th>Up for trade?</th>
-              <th>Belongs to user </th>
+  console.log('user, pins', user, pins);
+  // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
+  return (
+    <div className="container">
+      <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
+      <p>Your ID is: {user.id}</p>
+      <p>Change your password: {user.password}</p>
+      <p>First Name: {user.first_name}</p>
+      <p>Last Name: {user.last_name}</p>
+      <p>Team: {user.team}</p>
+      <p>League: {user.league}</p>
+      <p>Jersey Number: {user.player_number}</p>
+      <p>Your pins are: </p>
+      <table className="pinTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Year</th>
+            <th>Team</th>
+            <th>League</th>
+            <th>Image Link</th>
+            <th>Up for trade?</th>
+            <th>Belongs to user </th>
 
-            </tr>
-          </thead>
-          <tbody>
-            {pins.map((pin, i) => {
-              return (
-                <tr key={i}>
-                  <td>{pin.id}</td>
-                  <td>{pin.year}</td>
-                  <td>{pin.team}</td>
-                  <td>{pin.league}</td>
-                  <td>{pin.image_url}</td>
-                  <td>{pin.tradeable.toString()}</td>
-                  <td>{user.first_name}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+          </tr>
+        </thead>
+        <tbody>
+          {pins.map((pin, i) => {
+            return (
+              <tr key={i}>
+                <td>{pin.id}</td>
+                <td>{pin.year}</td>
+                <td>{pin.team}</td>
+                <td>{pin.league}</td>
+                <td>{pin.image_url}</td>
+                <td>{pin.tradeable.toString()}</td>
+                <td>{user.first_name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
 
-        <div className="pins">
-          <ul>
-            {pins.map((pin) => {
-              return (
-                <li key={pin.id}>
-                  {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
+      <div className="pins">
+        <ul>
+          {pins.map((pin) => {
+            return (
+              <li key={pin.id}>
+                {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
+                
+                <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
+                <button onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
+              </li>
+            )
+          })}
+        </ul>
 
-                  <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
-                  <button onClick={() => changeTradeable(pin.id)}>Toggle Trade Status</button>
-                </li>
-              )
-            })}
-          </ul>
-
-          {addPinToggle ? (
-            <>
-              <form onSubmit={handleSubmit}>
-                <label>Pin Year (YYYY):
+        {addPinToggle ? (
+          <>
+            <form onSubmit={handleSubmit}>
+              <label>Pin Year (YYYY):
               <input
                     type="number"
                     value={year}
