@@ -16,11 +16,32 @@ function UserPage() {
   const store = useReduxStore();
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({ type: 'ADD_PIN', payload: store.addPinReducer });
+  const [year, setYear] = useState('');
+  const [team, setTeam] = useState('');
+  const [league, setLeague] = useState('');
+  const [image, setImage] = useState('');
+  const [tradeable, setTradeable] = useState('');
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(`Adding Pin`, { year, team, league, image, tradeable });
+    dispatch({
+      type: 'ADD_PIN',
+      payload: {
+        year: year,
+        team: team,
+        league: league,
+        image: image,
+        tradeable: tradeable
+
+      }
+    });
     setPinToggle(false);
+
+    history.push('/')
   };
 
   const handleTradeableUpdate = (e) => {
@@ -103,6 +124,7 @@ function UserPage() {
           })}
         </tbody>
       </table>
+
       <div className="pins">
         <ul>
           {pins.map(pin => {
@@ -113,22 +135,21 @@ function UserPage() {
 
                 <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
                 {updatePinToggle ? (
-          <>
-            <form onSubmit={handleTradeableUpdate}>
-              <label htmlFor="input-tradeable">Tradeable Status? </label>
-              <input
-                type="text"
-                id="input-tradeable"
-                value={store.updatePinReducer.pinTradeable}
-                onChange={handleTradeableChange}
-                required
-              />
-              <button type="submit">Save Pin </button>
-            </form>
-          </>
-        ) : (
-            <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
-          )}
+                  <>
+                    <form onSubmit={handleTradeableUpdate}>
+                      <label>Tradeable Status? </label>
+                      <input
+                        type="text"
+                        value={tradeable}
+                        onChange={(event) => setTradeable(event.target.value)}
+                        required
+                      />
+                      <button type="submit">Save Pin </button>
+                    </form>
+                  </>
+                ) : (
+                    <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
+                  )}
 
               </li>
             )
@@ -138,50 +159,50 @@ function UserPage() {
         {addPinToggle ? (
           <>
             <form onSubmit={handleSubmit}>
-              <label htmlFor="input-year">Pin Year (YYYY): </label>
+              <label>Pin Year (YYYY):
               <input
-                type="number"
-                id="input-year"
-                value={store.pins.year}
-                onChange={handleYearChange}
-                required
-              />
+                  type="number"
+                  value={year}
+                  onChange={(event) => setYear(event.target.value)}
+                  required
+                />
+              </label>
               <span></span>
-              <label htmlFor="input-team">Team: </label>
+              <label>Team:
               <input
-                type="text"
-                id="input-team"
-                value={store.pins.team}
-                onChange={handleTeamChange}
-                required
-              />
+                  type="text"
+                  value={team}
+                  onChange={(event) => setTeam(event.target.value)}
+                  required
+                />
+              </label>
               <span></span>
-              <label htmlFor="input-league">League: </label>
+              <label>League:
               <input
-                type="text"
-                id="input-league"
-                value={store.pins.league}
-                onChange={handleLeagueChange}
-                required
-              />
+                  type="text"
+                  value={league}
+                  onChange={(event) => setLeague(event.target.value)}
+                  required
+                />
+              </label>
               <span></span>
-              <label htmlFor="input-image_url">Image Link: </label>
+              <label>Image Link:
               <input
-                type="text"
-                id="input-image_url"
-                value={store.pins.image_url}
-                onChange={handleUrlChange}
-                required
-              />
+                  type="text"
+                  value={image}
+                  onChange={(event) => setImage(event.target.value)}
+                  required
+                />
+              </label>
               <span></span>
-              <label htmlFor="input-tradeable">Up for trade? </label>
+              <label>Up for trade?
               <input
-                type="text"
-                id="input-tradeable"
-                value={store.pins.tradeable}
-                onChange={handleTradeableChange}
-                required
-              />
+                  type="text"
+                  value={tradeable}
+                  onChange={(event) => setTradeable(event.target.value)}
+                  required
+                />
+              </label>
               <span></span>
               <label htmlFor="input-user.id">User ID</label>
               <input
@@ -191,15 +212,16 @@ function UserPage() {
                 onChange={handleUserIdChange}
                 required
               />
-              <button type="submit">Save Pin </button>
-            </form>
+              
+            <button type="submit">Save Pin </button>
+          </form>
           </>
         ) : (
-            <button onClick={() => setPinToggle(true)}>Add Pin</button>
+      <button onClick={() => setPinToggle(true)}>Add Pin</button>
           )}
-      </div>
-
     </div>
+
+    </div >
   );
 }
 
