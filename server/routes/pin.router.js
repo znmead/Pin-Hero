@@ -39,7 +39,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // TODO: UPDATE w/rejectUnauthenticated, TEST MORE IN POSTMAN
 // PUT router working in POSTMAN
 // Updates tradeable status via http://localhost:5000/api/pin/tradeable/id
-router.put('/', rejectUnauthenticated,   (req, res) => {
+router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
   let newTrade = req.body.tradeable;
   let id = req.params.id;
   console.log(`User ${req.body.user_id} updating pin ${req.body.team} to DB`, newTrade );

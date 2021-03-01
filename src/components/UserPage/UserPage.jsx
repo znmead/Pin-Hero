@@ -44,16 +44,16 @@ function UserPage() {
     history.push('/')
   };
 
-  const handleTradeableUpdate = (e) => {
-
-    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: store.updatePinReducer })
-    dispatch({ type: 'FETCH_PIN' });
-  }
-
   const handleDelete = (id) => {
     dispatch({ type: 'DELETE_PIN', payload: id })
     dispatch({ type: 'FETCH_PIN' });
   };
+
+  const handleTradeableUpdate = (id) => {
+
+    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: id })
+    dispatch({ type: 'FETCH_PIN' });
+  }
 
   const handleTeamChange = (e) => {
     dispatch({ type: 'SET_PIN_TEAM', payload: e.target.value });
@@ -71,8 +71,8 @@ function UserPage() {
     dispatch({ type: 'SET_PIN_URL', payload: e.target.value });
   };
 
-  const handleTradeableChange = (e) => {
-    dispatch({ type: 'SET_PIN_TRADEABLE', payload: e.target.value });
+  const handleTradeableChange = (event) => {
+    dispatch({ type: 'SET_PIN_TRADEABLE', payload: {tradeable: tradeable} });
   };
 
   const handleUserIdChange = (e) => {

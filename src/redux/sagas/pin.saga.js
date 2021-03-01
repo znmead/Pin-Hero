@@ -32,7 +32,7 @@ function* addPin(action) {
 // PUT pin tradeable status
 function* updatePin(action) {
     try {
-        yield axios.post(`/api/pin/tradeable/${action.payload}`);
+        yield axios.put(`/api/pin/tradeable/:id`);
         yield put({ type: 'UPDATE_PIN_TRADEABLE' });
         yield put({ type: 'FETCH_PIN' });
     } catch (error) {
@@ -43,7 +43,7 @@ function* updatePin(action) {
 // DELETE pin from hockey_pins db
 function* deletePin(action) {
     try {
-        yield axios.delete(`/api/pin/${action.payload}`);
+        yield axios.delete(`/api/pin/tradeable/:id`);
         yield put({ type: 'FETCH_PIN' });
     } catch (error) {
         console.log('Error deleting pin', error);
