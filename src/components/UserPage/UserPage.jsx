@@ -21,20 +21,20 @@ function UserPage() {
   const [year, setYear] = useState('');
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('');
-  const [image, setImage] = useState('');
+  const [image_url, setImage_Url]= useState('');
   const [tradeable, setTradeable] = useState('');
 
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Adding Pin`, { year, team, league, image, tradeable });
+    console.log(`Adding Pin`, { year, team, league, image_url, tradeable });
     dispatch({
       type: 'ADD_PIN',
       payload: {
         year: year,
         team: team,
         league: league,
-        image: image,
+        image_url: image_url,
         tradeable: tradeable
 
       }
@@ -104,6 +104,7 @@ function UserPage() {
             <th>Year</th>
             <th>Team</th>
             <th>League</th>
+            <th>Image Link</th>
             <th>Up for trade?</th>
             <th>Belongs to user </th>
 
@@ -117,6 +118,7 @@ function UserPage() {
                 <td>{pin.year}</td>
                 <td>{pin.team}</td>
                 <td>{pin.league}</td>
+                <td>{pin.image_url}</td>
                 <td>{pin.tradeable.toString()}</td>
                 <td>{user.first_name}</td>
               </tr>
@@ -189,8 +191,8 @@ function UserPage() {
               <label>Image Link:
               <input
                   type="text"
-                  value={image}
-                  onChange={(event) => setImage(event.target.value)}
+                  value={image_url}
+                  onChange={(event) => setImage_Url(event.target.value)}
                   required
                 />
               </label>
