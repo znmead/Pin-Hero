@@ -48,7 +48,7 @@ router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
     console.log('Trade status updated successfully');
     res.sendStatus(200);
   }).catch(error => {
-    console.log('Error in post', error);
+    console.log('Error in put', error);
     res.sendStatus(500);
   });
 });

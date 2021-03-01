@@ -30,15 +30,17 @@ function* addPin(action) {
 };
 
 // PUT pin tradeable status
-function* updatePin(action) {
-    try {
-        yield axios.put(`/api/pin/tradeable/:id`);
-        yield put({ type: 'UPDATE_PIN_TRADEABLE' });
-        yield put({ type: 'FETCH_PIN' });
-    } catch (error) {
-        console.log('Error updating pin', error);
-    }
-};
+// function* updatePin(action) {
+//     try {
+        
+//         yield axios.put(`/api/pin/tradeable/:id`)
+       
+//         yield put({ type: 'UPDATE_PIN_TRADEABLE' })
+//         yield put({ type: 'FETCH_PIN' });
+//     } catch (error) {
+//         console.log('Error updating pin', error);
+//     }
+// };
 
 // DELETE pin from hockey_pins db
 function* deletePin(action) {
@@ -54,7 +56,7 @@ function* pinSaga() {
     yield takeLatest('FETCH_PIN', fetchPins);
     yield takeLatest('ADD_PIN', addPin);
     yield takeLatest('DELETE_PIN', deletePin);
-    yield takeLatest('UPDATE_PIN_TRADEABLE', updatePin);
+    // yield takeLatest('UPDATE_PIN_TRADEABLE', updatePin);
 };
 
 export default pinSaga;
