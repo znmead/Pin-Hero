@@ -52,7 +52,7 @@ function UserPage() {
 
   const handleTradeableUpdate = (id) => {
     dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
-    dispatch({ type: 'FETCH_PIN' });
+    // dispatch({ type: 'FETCH_PIN' });
   }
 
   const handleTeamChange = (e) => {
