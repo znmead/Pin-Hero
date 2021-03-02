@@ -59,9 +59,8 @@ function UserPage() {
   const handleTradeableUpdate = (id) => {
     dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
     dispatch({ type: 'FETCH_PIN' });
+    dispatch({ type: 'FETCH_PIN' });
   }
-
-
 
   const handleTeamChange = (e) => {
       dispatch({ type: 'SET_PIN_TEAM', payload: e.target.value });
@@ -193,14 +192,7 @@ function UserPage() {
                   />
                 </label>
                 <span></span>
-                <label htmlFor="input-user.id">User ID</label>
-                <input
-                  type="number"
-                  id="input-user.id"
-                  value={store.user.id}
-                  onChange={handleUserIdChange}
-                  required
-                />
+                
 
                 <button type="submit">Save Pin </button>
               </form>
@@ -253,3 +245,12 @@ function UserPage() {
 // ) : (
 //     <button onClick={() => setUpdatePinToggle(true)}>Update Trade Status</button>
 //   )}
+
+{/* <label htmlFor="input-user.id">User ID</label>
+                <input
+                  type="number"
+                  id="input-user.id"
+                  value={store.user.id}
+                  onChange={handleUserIdChange}
+                  required
+                /> */}

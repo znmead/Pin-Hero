@@ -43,8 +43,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
   console.log(req.body, req.params)
   let newTrade = req.body.tradeable;
-
-  
   let id = req.params.id;
   console.log(`User updating pin ${id} to DB`, newTrade );
   const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;
