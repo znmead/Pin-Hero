@@ -5,6 +5,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import useSound from 'use-sound';
 import './UserPage.css';
 import swal from 'sweetalert';
 import axios from 'axios';
@@ -113,12 +114,10 @@ function UserPage() {
   };
 
   console.log('user, pins', user, pins);
-  // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
+  
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
-      <p>Your ID is: {user.id}</p>
-      <p>Change your password: {user.password}</p>
       <p>First Name: {user.first_name}</p>
       <p>Last Name: {user.last_name}</p>
       <p>Team: {user.team}</p>
@@ -227,7 +226,6 @@ function UserPage() {
             <button onClick={() => setPinToggle(true)}>Add Pin</button>
           )}
       </div>
-
     </div >
   );
 }

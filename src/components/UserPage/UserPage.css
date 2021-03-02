@@ -1,15 +1,16 @@
  body {
-   
+  background-color: #15001a;
+  background-image: url("https://www.transparenttextures.com/patterns/white-diamond.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
  }
 
 
 
-
-
-
-
 .pinTable {
+  /* background-color: #15001a;
+  background-image: url("https://www.transparenttextures.com/patterns/white-diamond.png"); */
     border-collapse: collapse;
+    /* color: #61dafb; */
   }
   table td {
     border: 3px solid black; 

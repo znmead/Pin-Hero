@@ -9,6 +9,8 @@ import rootReducer from './redux/reducers/_root.reducer'; // imports ./redux/red
 import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.js
 
 import App from './components/App/App';
+import { ChakraProvider } from "@chakra-ui/react"
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -33,7 +35,9 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </Provider>,
   document.getElementById('react-root'),
 );
