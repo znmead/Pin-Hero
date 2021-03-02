@@ -31,7 +31,6 @@ function UserPage() {
     dispatch({ type: 'FETCH_PIN' });
   }, []);
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Adding Pin`, { year, team, league, image_url, tradeable });
@@ -83,13 +82,9 @@ function UserPage() {
             icon: "success",
           });
           dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
-          // dispatch({ type: 'FETCH_PIN' });
-
         } else {
-
           return;
         }
-
       });
   };
 

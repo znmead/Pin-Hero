@@ -16,15 +16,11 @@ function* addPin(action) {
 // PUT pin tradeable status
 function* updatePin(action) {
     try {
-        
+
         yield axios.put(`/api/pin/tradeable/${action.payload.id}`, action.payload);
-        //console.log(action.payload.id, action.payload)
-        //yield put({ type: 'UPDATE_PIN_TRADEABLE' });
+        console.log(action.payload.id, action.payload)
         yield put({ type: 'FETCH_PIN' });
-        yield put({ type: 'SET_PIN' });
-        
     } catch (error) {
-        
         console.log('Error updating pin', error);
     }
 };
@@ -60,7 +56,7 @@ function* pinSaga() {
     yield takeLatest('ADD_PIN', addPin);
     yield takeLatest('DELETE_PIN', deletePin);
     yield takeLatest('UPDATE_PIN_TRADEABLE', updatePin);
-   
+
 };
 
 export default pinSaga;
