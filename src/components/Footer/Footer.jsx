@@ -1,6 +1,9 @@
 import React from 'react';
 import './Footer.css';
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+import {FaGithub, FaLinkedin } from 'react-icons/fa';
+
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
@@ -8,7 +11,7 @@ import './Footer.css';
 
 function Footer() {
   return <footer>
-    <hr></hr>
+    <hr></hr> 
     <a href="https://github.com/znmead/eda-solo-project-2021">
       <i className="fab fa-github-square"></i>
     </a>
@@ -21,3 +24,16 @@ function Footer() {
 };
 
 export default Footer;
+
+{/* <a href="https://github.com/znmead/eda-solo-project-2021">
+      <i className="fab fa-github-square"></i>
+    </a> */}
+
+  //   <Button colorScheme="linkedin" leftIcon={<FaLinkedin />}>
+  //   LinkedIn
+  // </Button>
+
+  // <Button colorScheme="github" leftIcon={<FaGithub />}
+  //   >
+  //   Github
+  // </Button>
