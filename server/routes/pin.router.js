@@ -36,7 +36,6 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 });
 
 
-// TODO: UPDATE w/rejectUnauthenticated, TEST MORE IN POSTMAN
 // PUT router working in POSTMAN
 // Updates tradeable status via http://localhost:5000/api/pin/tradeable/id
 //const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;

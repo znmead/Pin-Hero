@@ -58,9 +58,9 @@ function UserPage() {
       buttons: true,
       dangerMode: true,
     })
-      .then((willDelete) => {
-        if (willDelete) {
-          swal("aight Jarvinski", {
+      .then((yesDelete) => {
+        if (yesDelete) {
+          swal("aight, Jarvinski", {
             icon: "success",
           });
           dispatch({ type: 'DELETE_PIN', payload: id })
@@ -70,16 +70,28 @@ function UserPage() {
       });
   };
 
-
-
-
-
-
-
   const handleTradeableUpdate = (id) => {
-    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } })
-    dispatch({ type: 'FETCH_PIN' });
-  }
+    swal({
+      title: "This is a sweet pin, are you sure you want to give it up?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: false,
+    })
+      .then((yesTrade) => {
+        if (yesTrade) {
+          swal("You'll regret this, Jarvinski", {
+            icon: "success",
+          });
+          dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
+          // dispatch({ type: 'FETCH_PIN' });
+
+        } else {
+
+          return;
+        }
+
+      });
+  };
 
   const handleTeamChange = (e) => {
     dispatch({ type: 'SET_PIN_TEAM', payload: e.target.value });

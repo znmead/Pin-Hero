@@ -4,10 +4,10 @@ const addPinReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_PIN_TEAM':
             newState.pinTeam = action.payload;
-            return newState;
+            //return newState;
         case 'SET_PIN_LEAGUE':
             newState.pinLeague = action.payload;
-            return newState;
+            //return newState;
         case 'SET_PIN_YEAR':
             newState.pinYear = action.payload;
         case 'SET_PIN_URL':
