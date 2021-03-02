@@ -1,4 +1,4 @@
-const addPinReducer = (state = { team: '', league: '', year:'', image_url:'', tradeable:'', user_id: 0 }, action) => {
+const addPinReducer = (state = [], action) => {
     let newState = { ...state };
 
     switch (action.type) {
@@ -17,10 +17,12 @@ const addPinReducer = (state = { team: '', league: '', year:'', image_url:'', tr
         case 'SET_PIN_USER_ID': 
             newState.userID = action.payload;
         case 'RESET_ADD_PIN':
-            return {team: '', league: '', year:'', image_url:'', tradeable:'', user_id:'' };
+            return [];
         default:
             return state;
     };
 };
 
 export default addPinReducer;
+
+// { team: '', league: '', year:'', image_url:'', tradeable: false, user_id: 0 }

@@ -25,7 +25,7 @@ function UserPage() {
   const [team, setTeam] = useState('');
   const [league, setLeague] = useState('');
   const [image_url, setImage_Url] = useState('');
-  const [tradeable, setTradeable] = useState('');
+  const [tradeable, setTradeable] = useState(false);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_PIN' });
@@ -57,8 +57,7 @@ function UserPage() {
   };
 
   const handleTradeableUpdate = (id) => {
-    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: !tradeable, id: id } })
-    dispatch({ type: 'FETCH_PIN' });
+    dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } })
     dispatch({ type: 'FETCH_PIN' });
   }
 
