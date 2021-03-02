@@ -52,9 +52,29 @@ function UserPage() {
   };
 
   const handleDelete = (id) => {
-    dispatch({ type: 'DELETE_PIN', payload: id })
-    dispatch({ type: 'FETCH_PIN' });
+    swal({
+      title: "Are you sure you want to delete this pin?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("aight Jarvinski", {
+            icon: "success",
+          });
+          dispatch({ type: 'DELETE_PIN', payload: id })
+        } else {
+          return;
+        }
+      });
   };
+
+
+
+
+
+
 
   const handleTradeableUpdate = (id) => {
     dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } })
@@ -62,28 +82,28 @@ function UserPage() {
   }
 
   const handleTeamChange = (e) => {
-      dispatch({ type: 'SET_PIN_TEAM', payload: e.target.value });
-    };
+    dispatch({ type: 'SET_PIN_TEAM', payload: e.target.value });
+  };
 
-    const handleLeagueChange = (e) => {
-      dispatch({ type: 'SET_PIN_LEAGUE', payload: e.target.value });
-    };
+  const handleLeagueChange = (e) => {
+    dispatch({ type: 'SET_PIN_LEAGUE', payload: e.target.value });
+  };
 
-    const handleYearChange = (e) => {
-      dispatch({ type: 'SET_PIN_YEAR', payload: e.target.value });
-    };
+  const handleYearChange = (e) => {
+    dispatch({ type: 'SET_PIN_YEAR', payload: e.target.value });
+  };
 
-    const handleUrlChange = (e) => {
-      dispatch({ type: 'SET_PIN_URL', payload: e.target.value });
-    };
+  const handleUrlChange = (e) => {
+    dispatch({ type: 'SET_PIN_URL', payload: e.target.value });
+  };
 
-    const handleTradeableChange = (event) => {
-      dispatch({ type: 'SET_PIN_TRADEABLE', payload: { tradeable: !tradeable } });
-    };
+  const handleTradeableChange = (event) => {
+    dispatch({ type: 'SET_PIN_TRADEABLE', payload: { tradeable: !tradeable } });
+  };
 
-    const handleUserIdChange = (e) => {
-      dispatch({ type: 'SET_PIN_USER_ID', payload: user.id });
-    };
+  const handleUserIdChange = (e) => {
+    dispatch({ type: 'SET_PIN_USER_ID', payload: user.id });
+  };
 
   console.log('user, pins', user, pins);
   // <button onClick={() => handleTradeableUpdate(pin.tradeable)}>Update trade status</button>
@@ -135,7 +155,7 @@ function UserPage() {
               <li key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
-                
+
                 <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
                 <button onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
               </li>
@@ -148,65 +168,65 @@ function UserPage() {
             <form onSubmit={handleSubmit}>
               <label>Pin Year (YYYY):
               <input
-                    type="number"
-                    value={year}
-                    onChange={(event) => setYear(event.target.value)}
-                    required
-                  />
-                </label>
-                <span></span>
-                <label>Team:
+                  type="number"
+                  value={year}
+                  onChange={(event) => setYear(event.target.value)}
+                  required
+                />
+              </label>
+              <span></span>
+              <label>Team:
               <input
-                    type="text"
-                    value={team}
-                    onChange={(event) => setTeam(event.target.value)}
-                    required
-                  />
-                </label>
-                <span></span>
-                <label>League:
+                  type="text"
+                  value={team}
+                  onChange={(event) => setTeam(event.target.value)}
+                  required
+                />
+              </label>
+              <span></span>
+              <label>League:
               <input
-                    type="text"
-                    value={league}
-                    onChange={(event) => setLeague(event.target.value)}
-                    required
-                  />
-                </label>
-                <span></span>
-                <label>Image Link:
+                  type="text"
+                  value={league}
+                  onChange={(event) => setLeague(event.target.value)}
+                  required
+                />
+              </label>
+              <span></span>
+              <label>Image Link:
               <input
-                    type="text"
-                    value={image_url}
-                    onChange={(event) => setImage_Url(event.target.value)}
-                    required
-                  />
-                </label>
-                <span></span>
-                <label>Up for trade?
+                  type="text"
+                  value={image_url}
+                  onChange={(event) => setImage_Url(event.target.value)}
+                  required
+                />
+              </label>
+              <span></span>
+              <label>Up for trade?
               <input
-                    type="text"
-                    value={tradeable}
-                    onChange={(event) => setTradeable(event.target.value)}
-                    required
-                  />
-                </label>
-                <span></span>
-                
+                  type="text"
+                  value={tradeable}
+                  onChange={(event) => setTradeable(event.target.value)}
+                  required
+                />
+              </label>
+              <span></span>
 
-                <button type="submit">Save Pin </button>
-              </form>
-            </>
-          ) : (
-              <button onClick={() => setPinToggle(true)}>Add Pin</button>
-            )}
-        </div>
 
-      </div >
-    );
-  }
+              <button type="submit">Save Pin </button>
+            </form>
+          </>
+        ) : (
+            <button onClick={() => setPinToggle(true)}>Add Pin</button>
+          )}
+      </div>
 
-  // this allows us to use <App /> in index.js
-  export default UserPage;
+    </div >
+  );
+}
+
+// this allows us to use <App /> in index.js
+export default UserPage;
 
 // {updatePinToggle ? (
 //   <>
