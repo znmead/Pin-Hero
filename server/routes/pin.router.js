@@ -8,7 +8,7 @@ const {
 // GET router working in POSTMAN
 // GETs a list of all pins from db
 router.get('/', (req, res) => {
-  let query = 'SELECT * FROM "pin";'
+  let query = 'SELECT * FROM "pin" ORDER BY "id" ASC;'
   pool
     .query(query).then(
       (result) => { res.send(result.rows) })
@@ -42,10 +42,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 //const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;
 router.put('/tradeable/:id', rejectUnauthenticated,   (req, res) => {
   console.log(req.body, req.params)
-  let newTrade = req.body.tradeable;
+  //let newTrade = !req.body.tradeable;
   let id = req.params.id;
-  console.log(`User updating pin ${id} to DB`, newTrade );
-  const query = `UPDATE "pin" SET "tradeable"=${newTrade} WHERE "id"=$1`;
+  //console.log(`User updating pin ${id} to DB`, newTrade );
+  const query = `UPDATE "pin" SET "tradeable" = NOT "tradeable" 
+  WHERE "id"=$1;`
   pool.query(query, [id]).then(() => {
     console.log('Trade status updated successfully');
     res.sendStatus(200);
