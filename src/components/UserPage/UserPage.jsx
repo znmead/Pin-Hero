@@ -10,6 +10,8 @@ import './UserPage.css';
 import swal from 'sweetalert';
 import axios from 'axios';
 
+import { Button, ButtonGroup } from "@chakra-ui/react"
+
 
 function UserPage(props) {
   let [addPinToggle, setPinToggle] = useState(false);
@@ -162,10 +164,10 @@ function UserPage(props) {
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
 
-                <button
-                 className="btn" onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
-                <button
-                 className="btn" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
+                <Button
+                 className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;
+                <Button
+                 className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button>
               </li>
             )
           })}
