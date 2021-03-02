@@ -21,6 +21,13 @@
   margin: 0;
 }
 
+.nav-title:hover {
+  background-color: #61dafb;
+  opacity: 50%;
+  color: #282c34;
+}
+
+
 .navLink {
   display: inline-block;
   color: #61dafb;

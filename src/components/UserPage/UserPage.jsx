@@ -11,7 +11,7 @@ import swal from 'sweetalert';
 import axios from 'axios';
 
 
-function UserPage() {
+function UserPage(props) {
   let [addPinToggle, setPinToggle] = useState(false);
   let [updatePinToggle, setUpdatePinToggle] = useState(false);
 
@@ -162,8 +162,10 @@ function UserPage() {
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
 
-                <button onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
-                <button onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
+                <button
+                 className="btn" onClick={() => handleDelete(pin.id)}>Delete</button> &nbsp;
+                <button
+                 className="btn" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</button>
               </li>
             )
           })}
@@ -223,7 +225,8 @@ function UserPage() {
             </form>
           </>
         ) : (
-            <button onClick={() => setPinToggle(true)}>Add Pin</button>
+            <button
+            className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
           )}
       </div>
     </div >
