@@ -19,6 +19,11 @@ import {
   FormHelperText,
   HStack,
   Input,
+  List, 
+  ListItem, 
+  ListIcon, 
+  OrderedList, 
+  UnorderedList,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
@@ -28,6 +33,14 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
 
 } from "@chakra-ui/react"
 
@@ -176,10 +189,10 @@ function UserPage(props) {
       </table>
 
       <div className="pinList">
-        <ul>
+        <UnorderedList spacing={3}>
           {pins.map((pin) => {
             return (
-              <li key={pin.id}>
+              <ListItem key={pin.id}>
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
 
@@ -187,11 +200,12 @@ function UserPage(props) {
                   className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;
                 <Button
                   className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button>
-              </li>
+              </ListItem>
             )
           })}
-        </ul>
-
+        </UnorderedList>
+        <span></span>
+              &nbsp;
         {addPinToggle ? (
           <>
             <form className="formPanel" onSubmit={handleSubmit}>
