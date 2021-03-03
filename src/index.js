@@ -10,6 +10,8 @@ import rootSaga from './redux/sagas/_root.saga'; // imports ./redux/sagas/index.
 
 import App from './components/App/App';
 import { ChakraProvider } from "@chakra-ui/react"
+import theme from "./theme"
+import { ColorModeScript } from "@chakra-ui/react"
 
 
 const sagaMiddleware = createSagaMiddleware();
@@ -36,6 +38,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <Provider store={store}>
     <ChakraProvider>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <App />
     </ChakraProvider>
   </Provider>,

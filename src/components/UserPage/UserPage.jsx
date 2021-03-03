@@ -11,6 +11,23 @@ import swal from 'sweetalert';
 import axios from 'axios';
 
 import { Button, ButtonGroup } from "@chakra-ui/react"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  HStack,
+  Input,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Radio,
+  RadioGroup,
+  Select,
+
+} from "@chakra-ui/react"
 
 
 function UserPage(props) {
@@ -116,7 +133,7 @@ function UserPage(props) {
   };
 
   console.log('user, pins', user, pins);
-  
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
@@ -165,9 +182,9 @@ function UserPage(props) {
               &nbsp;
 
                 <Button
-                 className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;
+                  className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;
                 <Button
-                 className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button>
+                  className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button>
               </li>
             )
           })}
@@ -175,60 +192,83 @@ function UserPage(props) {
 
         {addPinToggle ? (
           <>
-            <form onSubmit={handleSubmit}>
-              <label>Pin Year (YYYY):
-              <input
-                  type="number"
-                  value={year}
-                  onChange={(event) => setYear(event.target.value)}
-                  required
-                />
-              </label>
+            <form className="formPanel" onSubmit={handleSubmit}>
+              <FormControl id="year"
+                type="number"
+                value={year}
+                defaultValue={1982}
+                onChange={(event) => setYear(event.target.value)}
+                isRequired>
+                <FormLabel>Year</FormLabel>
+                <NumberInput max={2021} min={1982}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
               <span></span>
-              <label>Team:
-              <input
-                  type="text"
-                  value={team}
-                  onChange={(event) => setTeam(event.target.value)}
-                  required
-                />
-              </label>
+              <FormControl id="team"
+                value={team}
+                onChange={(event) => setTeam(event.target.value)}
+                isRequired
+              >
+                <FormLabel>Team</FormLabel>
+                <Input type="text" />
+                <FormHelperText>Knights or Avs?</FormHelperText>
+              </FormControl>
               <span></span>
-              <label>League:
-              <input
-                  type="text"
-                  value={league}
-                  onChange={(event) => setLeague(event.target.value)}
-                  required
-                />
-              </label>
-              <span></span>
-              <label>Image Link:
-              <input
-                  type="text"
-                  value={image_url}
-                  onChange={(event) => setImage_Url(event.target.value)}
-                  required
-                />
-              </label>
-              <span></span>
-              <label>Up for trade?
-              <input
-                  type="text"
-                  value={tradeable}
-                  onChange={(event) => setTradeable(event.target.value)}
-                  required
-                />
-              </label>
-              <span></span>
+              <FormControl id="league"
+                type="text"
+                value={league}
+                onChange={(event) => setLeague(event.target.value)}
+                isRequired
+              >
+                <FormLabel>League</FormLabel>
+                <Select placeholder="Select League">
+                  <option>Termites</option>
+                  <option>Mites</option>
+                  <option>Squirts</option>
+                  <option>PeeWee</option>
+                  <option>Bantam</option>
+                  <option>NHL</option>
+                  <option>Other</option>
+                </Select>
+              </FormControl>
 
-
-              <button type="submit">Save Pin </button>
+              <span></span>
+              <FormControl id="url"
+                type="url"
+                value={image_url}
+                onChange={(event) => setImage_Url(event.target.value)}
+                isRequired
+              >
+                <FormLabel>Image Link</FormLabel>
+                <Input type="url" />
+                <FormHelperText>Upload a picture?</FormHelperText>
+              </FormControl>
+              <span></span>
+              <FormControl as="fieldset"
+                type="text"
+                value={tradeable}
+                onChange={(event) => setTradeable(event.target.value)}
+              >
+                <FormLabel as="legend">Up for trade?</FormLabel>
+                <RadioGroup defaultValue="FALSE">
+                  <HStack spacing="24px">
+                    <Radio value="TRUE">Aight</Radio>
+                    <Radio value="FALSE">Nah</Radio>
+                  </HStack>
+                </RadioGroup>
+                <FormHelperText>Choose wisely, Jarvinski</FormHelperText>
+              </FormControl>
+              <Button className="Button" type="submit">Save Pin </Button>
             </form>
           </>
         ) : (
             <button
-            className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
+              className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
           )}
       </div>
     </div >
@@ -283,3 +323,47 @@ export default UserPage;
                   onChange={handleUserIdChange}
                   required
                 /> */}
+
+              //   <label>Pin Year (YYYY):
+              // <input
+              //     type="number"
+              //     value={year}
+              //     onChange={(event) => setYear(event.target.value)}
+              //     required
+              //   />
+              // </label>
+              // <label>Team:
+              // <input
+              //     type="text"
+              //     value={team}
+              //     onChange={(event) => setTeam(event.target.value)}
+              //     required
+              //   />
+              // </label>
+              // <label>League:
+              // <input
+              //     type="text"
+              //     value={league}
+              //     onChange={(event) => setLeague(event.target.value)}
+              //     required
+              //   />
+              // </label>
+
+              // <label>Image Link:
+              // <input
+              //     type="text"
+              //     value={image_url}
+              //     onChange={(event) => setImage_Url(event.target.value)}
+              //     required
+              //   />
+              // </label>
+
+              // <label>Up for trade?
+              // <input
+              //     type="text"
+              //     value={tradeable}
+              //     onChange={(event) => setTradeable(event.target.value)}
+              //     required
+              //   />
+              // </label>
+              // <span></span>
