@@ -10,8 +10,9 @@ import './UserPage.css';
 import swal from 'sweetalert';
 import axios from 'axios';
 
-import { Button, ButtonGroup } from "@chakra-ui/react"
 import {
+  Button,
+  ButtonGroup,
   FormControl,
   FormLabel,
   FormErrorMessage,
@@ -23,6 +24,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
+  Progress,
   Radio,
   RadioGroup,
   Select,
@@ -216,7 +218,7 @@ function UserPage(props) {
               >
                 <FormLabel>Team</FormLabel>
                 <Input type="text" />
-                <FormHelperText>Knights or Avs?</FormHelperText>
+                <FormHelperText>Anyone but the Spuds</FormHelperText>
               </FormControl>
               <span></span>
               <FormControl id="league"
@@ -262,14 +264,21 @@ function UserPage(props) {
                 </RadioGroup>
                 <FormHelperText>Choose wisely, Jarvinski</FormHelperText>
               </FormControl>
-              <Button className="Button" type="submit">Save Pin </Button>
+
+
+
+              <ButtonGroup variant="outline" spacing="40">
+                <Button className="Button" type="submit">Save Pin </Button>
+              &nbsp;
               <Button className="Button" type="cancel"
-              onClick={() =>  setPinToggle(false)}>Cancel</Button>
+                  onClick={() => setPinToggle(false)}>Cancel
+              </Button>
+              </ButtonGroup>
             </form>
           </>
         ) : (
             <button
-              className="btn" onClick={() =>  setPinToggle(true)}>Add Pin</button>
+              className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
           )}
       </div>
     </div >
