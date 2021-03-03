@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import pins from './pin.reducer';
 import addPinReducer from './addPin.reducer';
+import pinDetailsReducer from './pinDetails.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   pins, // will have 
   addPinReducer,
+  pinDetailsReducer,
 });
 
 export default rootReducer;

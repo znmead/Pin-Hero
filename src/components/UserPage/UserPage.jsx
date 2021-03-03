@@ -13,17 +13,26 @@ import axios from 'axios';
 import {
   Button,
   ButtonGroup,
+  Divider,
   FormControl,
   FormLabel,
   FormErrorMessage,
   FormHelperText,
   HStack,
   Input,
-  List, 
-  ListItem, 
-  ListIcon, 
-  OrderedList, 
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
   UnorderedList,
+  MdCheckCircle,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
@@ -33,6 +42,7 @@ import {
   Radio,
   RadioGroup,
   Select,
+  Stack,
   Table,
   Thead,
   Tbody,
@@ -41,6 +51,7 @@ import {
   Th,
   Td,
   TableCaption,
+  Text,
 
 } from "@chakra-ui/react"
 
@@ -65,6 +76,15 @@ function UserPage(props) {
   useEffect(() => {
     dispatch({ type: 'FETCH_PIN' });
   }, []);
+
+  const setPinDetails = (pin) => {
+    console.log(`You want to see details for ${pin.team}`);
+    dispatch({
+      type: 'SET_PIN_DETAILS',
+      payload: pin,
+    });
+    history.push('/details');
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -157,42 +177,61 @@ function UserPage(props) {
       <p>Team: {user.team}</p>
       <p>League: {user.league}</p>
       <p>Jersey Number: {user.player_number}</p>
-      <p>Your pins are: </p>
-      <table className="pinTable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Year</th>
-            <th>Team</th>
-            <th>League</th>
-            <th>Image Link</th>
-            <th>Up for trade?</th>
-            <th>Belongs to user </th>
 
-          </tr>
-        </thead>
-        <tbody>
+      <Divider orientation="horizontal" />
+      <Table variant="simple"
+        className="pinTable">
+        <TableCaption>Pin Table</TableCaption>
+        <Thead>
+          <Tr>
+            <Th>ID</Th>
+            <Th>Year</Th>
+            <Th>Team</Th>
+            <Th>League</Th>
+            <Th>Image Link</Th>
+            <Th>Up for trade?</Th>
+            <Th>Belongs to user </Th>
+
+          </Tr>
+        </Thead>
+        <Tbody>
           {pins.map((pin, i) => {
             return (
-              <tr key={i}>
-                <td>{pin.id}</td>
-                <td>{pin.year}</td>
-                <td>{pin.team}</td>
-                <td>{pin.league}</td>
-                <td>{pin.image_url}</td>
-                <td>{pin.tradeable.toString()}</td>
-                <td>{user.first_name}</td>
-              </tr>
+              <Tr key={i}>
+                <Td>{pin.id}</Td>
+                <Td>{pin.year}</Td>
+                <Td>{pin.team}</Td>
+                <Td>{pin.league}</Td>
+                <Td>{pin.image_url}</Td>
+                <Td>{pin.tradeable.toString()}</Td>
+                <Td>{user.first_name}</Td>
+              </Tr>
             );
           })}
-        </tbody>
-      </table>
+        </Tbody>
+        <Tfoot>
+        <Tr>
+            <Th>ID</Th>
+            <Th>Year</Th>
+            <Th>Team</Th>
+            <Th>League</Th>
+            <Th>Image Link</Th>
+            <Th>Up for trade?</Th>
+            <Th>Belongs to user </Th>
+
+          </Tr>
+        </Tfoot>
+      </Table>
+
+      <Divider orientation="horizontal" />
+
 
       <div className="pinList">
         <UnorderedList spacing={3}>
           {pins.map((pin) => {
             return (
               <ListItem key={pin.id}>
+                <ListIcon as={MdCheckCircle} color="green.500" />
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
               &nbsp;
 
@@ -206,6 +245,7 @@ function UserPage(props) {
         </UnorderedList>
         <span></span>
               &nbsp;
+              <Divider orientation="horizontal" />
         {addPinToggle ? (
           <>
             <form className="formPanel" onSubmit={handleSubmit}>
