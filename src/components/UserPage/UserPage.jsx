@@ -72,7 +72,7 @@ function UserPage(props) {
 
   const handleDelete = (id) => {
     swal({
-      title: "Are you sure you want to delete this pin?",
+      title: "Hope you made a good trade! Sure you want to delete it?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -173,7 +173,7 @@ function UserPage(props) {
         </tbody>
       </table>
 
-      <div className="pins">
+      <div className="pinList">
         <ul>
           {pins.map((pin) => {
             return (
@@ -229,14 +229,13 @@ function UserPage(props) {
                 <Select placeholder="Select League">
                   <option>Termites</option>
                   <option>Mites</option>
-                  <option>Squirts</option>
+                  <option>Squirt</option>
                   <option>PeeWee</option>
                   <option>Bantam</option>
                   <option>NHL</option>
                   <option>Other</option>
                 </Select>
               </FormControl>
-
               <span></span>
               <FormControl id="url"
                 type="url"
@@ -264,11 +263,13 @@ function UserPage(props) {
                 <FormHelperText>Choose wisely, Jarvinski</FormHelperText>
               </FormControl>
               <Button className="Button" type="submit">Save Pin </Button>
+              <Button className="Button" type="cancel"
+              onClick={() =>  setPinToggle(false)}>Cancel</Button>
             </form>
           </>
         ) : (
             <button
-              className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
+              className="btn" onClick={() =>  setPinToggle(true)}>Add Pin</button>
           )}
       </div>
     </div >

@@ -1,3 +1,20 @@
+.pinList{
+  list-style: devanagari;
+  list-style-position: inside;
+  list-style-image: url();
+}
+
+ul {
+  list-style: devanagari inside none;
+  border: 2 px solid skyblue;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-size: calc(3px + 2vmin);
+}
+
 .pinTable {
   /* background-color: #15001a;
   background-image: url("https://www.transparenttextures.com/patterns/white-diamond.png"); */
@@ -156,5 +173,5 @@ Form Treatment
 input {
   margin: 5px;
   margin-bottom: 10px;
-  
+
 }
