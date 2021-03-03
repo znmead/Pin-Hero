@@ -202,16 +202,20 @@ function UserPage(props) {
                 onChange={(event) => setYear(event.target.value)}
                 isRequired>
                 <FormLabel>Year</FormLabel>
-                <NumberInput max={2021} min={1982}>
+                <NumberInput defaultValue={2020}
+                  max={2021} min={1982}>
                   <NumberInputField />
                   <NumberInputStepper>
                     <NumberIncrementStepper />
                     <NumberDecrementStepper />
                   </NumberInputStepper>
                 </NumberInput>
+                <FormHelperText>1982?</FormHelperText>
               </FormControl>
               <span></span>
+              &nbsp;
               <FormControl id="team"
+                placeholder="Team"
                 value={team}
                 onChange={(event) => setTeam(event.target.value)}
                 isRequired
@@ -221,6 +225,7 @@ function UserPage(props) {
                 <FormHelperText>Anyone but the Spuds</FormHelperText>
               </FormControl>
               <span></span>
+              &nbsp;
               <FormControl id="league"
                 type="text"
                 value={league}
@@ -237,19 +242,22 @@ function UserPage(props) {
                   <option>NHL</option>
                   <option>Other</option>
                 </Select>
+                <FormHelperText>PeeWee much?</FormHelperText>
               </FormControl>
               <span></span>
+              &nbsp;
               <FormControl id="url"
-                type="url"
+                type="text"
                 value={image_url}
                 onChange={(event) => setImage_Url(event.target.value)}
-                isRequired
+
               >
                 <FormLabel>Image Link</FormLabel>
                 <Input type="url" />
                 <FormHelperText>Upload a picture?</FormHelperText>
               </FormControl>
               <span></span>
+              &nbsp;
               <FormControl as="fieldset"
                 type="text"
                 value={tradeable}
@@ -264,15 +272,14 @@ function UserPage(props) {
                 </RadioGroup>
                 <FormHelperText>Choose wisely, Jarvinski</FormHelperText>
               </FormControl>
-
-
-
-              <ButtonGroup variant="outline" spacing="40">
-                <Button className="Button" type="submit">Save Pin </Button>
               &nbsp;
-              <Button className="Button" type="cancel"
+              <span></span>
+              <ButtonGroup variant="outline" spacing="40">
+                <Button className="Button" type="cancel"
                   onClick={() => setPinToggle(false)}>Cancel
               </Button>
+              &nbsp;
+                <Button className="Button" type="submit">Save Pin </Button>
               </ButtonGroup>
             </form>
           </>
