@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './PinDetails.css';
+import useReduxStore from "../../hooks/useReduxStore";
 import {
     Button,
     ButtonGroup,
@@ -50,16 +51,20 @@ import {
 function PinDetails(props) {
     const dispatch = useDispatch();
     const history = useHistory();
-    let pin = useSelector(store => store.pinDetails);
+    const pin = useSelector(store => store.pinDetailsReducer);
+
+    const user = useSelector((store) => store.user);
+    const pins = useSelector((store) => store.pins);
+    const store = useReduxStore();
 
     useEffect(() => {
-        dispactch({ type: 'FETCH_PIN' });
+        dispatch({ type: 'FETCH_PIN' });
 
     }, []);
 
-    if (pin.team === undefined) {
-        return <h1>Invalid Pin (No details found)</h1>
-    }
+    // if (pin.team === undefined) {
+    //     return <h1>Invalid Pin (No details found)</h1>
+    // }
 
     return (
         <>
