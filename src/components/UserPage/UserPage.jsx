@@ -198,7 +198,7 @@ function UserPage(props) {
           {pins.map((pin, i) => {
             return (
               <Tr key={i}>
-                <Td>{pin.id}</Td>
+                <Td onClick={() => setPinDetails(pin)}>{pin.id}</Td>
                 <Td>{pin.year}</Td>
                 <Td>{pin.team}</Td>
                 <Td>{pin.league}</Td>
