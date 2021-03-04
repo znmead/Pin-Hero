@@ -3,6 +3,53 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import {
+  Button,
+  ButtonGroup,
+  Divider,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  HStack,
+  Input,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  MdCheckCircle,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Progress,
+  Radio,
+  RadioGroup,
+  Select,
+  Stack,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  Text,
+
+} from "@chakra-ui/react"
+
+
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -21,9 +68,14 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-          <i className="fas fa-dragon">
+        &nbsp;<i className="fas fa-dragon">
           </i>&nbsp;<i className="fas fa-hockey-puck"></i>
-           &nbsp;Pin Zero <i className="fas fa-hockey-puck"></i> <i className="fas fa-dragon fa-flip-horizontal"></i>
+           &nbsp;<Text
+            bgGradient="linear(to-l, #7928CA,#FF0080)"
+            bgClip="text"
+          >
+            Pin Zero
+          </Text>&nbsp;<i className="fas fa-hockey-puck"></i> <i className="fas fa-dragon fa-flip-horizontal"></i>
         </h2>
 
       </Link>
