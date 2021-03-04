@@ -69,13 +69,14 @@ function Nav() {
       <Link to="/home">
         <h2 className="nav-title">
         &nbsp;<i className="fas fa-dragon">
-          </i>&nbsp;<i className="fas fa-hockey-puck"></i>
-           &nbsp;<Text
+          </i>&nbsp;&nbsp;<i className="fas fa-hockey-puck"></i>
+           <Text
             bgGradient="linear(to-l, #7928CA,#FF0080)"
             bgClip="text"
           >
-            Pin Zero
-          </Text>&nbsp;<i className="fas fa-hockey-puck"></i> <i className="fas fa-dragon fa-flip-horizontal"></i>
+            &nbsp;Pin Hero</Text>&nbsp;
+            <i className="fas fa-hockey-puck">
+            </i>&nbsp;&nbsp; <i className="fas fa-dragon fa-flip-horizontal"></i>
         </h2>
 
       </Link>
