@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useSound from 'use-sound';
 import './UserPage.css';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 import axios from 'axios';
 
 import {
@@ -54,6 +54,7 @@ import {
   Text,
 
 } from "@chakra-ui/react"
+import { transformAuthInfo } from 'passport';
 
 
 function UserPage(props) {
@@ -106,26 +107,32 @@ function UserPage(props) {
   };
 
   const handleDelete = (id) => {
-    swal({
+    Swal.fire({
       title: "Hope you made a good trade! Sure you want to delete it?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: `Yes`,
+      denyButtonText: `No`,
+      customClass: {
+        cancelButton: 'order-1 right-gap',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+      }
+     
     })
-      .then((yesDelete) => {
-        if (yesDelete) {
-          swal("aight, Jarvinski", {
-            icon: "success",
-          });
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("aight, Jarvinski", '', 'success');
           dispatch({ type: 'DELETE_PIN', payload: id })
-        } else {
+        } else if(result.isDenied) {
+          Swal.fire('Good choice, Jarvinski', '', 'info')
           return;
         }
       });
   };
 
   const handleTradeableUpdate = (id) => {
-    swal({
+    Swal.fire({
       title: "This is a sweet pin, are you sure you want to give it up?",
       icon: "warning",
       buttons: true,
@@ -133,7 +140,7 @@ function UserPage(props) {
     })
       .then((yesTrade) => {
         if (yesTrade) {
-          swal("You'll regret this, Jarvinski", {
+          Swal.fire("You'll regret this, Jarvinski", {
             icon: "success",
           });
           dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
@@ -197,8 +204,8 @@ function UserPage(props) {
         <Tbody>
           {pins.map((pin, i) => {
             return (
-              <Tr key={i}>
-                <Td onClick={() => setPinDetails(pin)}>{pin.id}</Td>
+              <Tr key={i} cursor="pointer" onClick={() => setPinDetails(pin)}>
+                <Td >{pin.id}</Td>
                 <Td>{pin.year}</Td>
                 <Td>{pin.team}</Td>
                 <Td>{pin.league}</Td>
@@ -210,7 +217,7 @@ function UserPage(props) {
           })}
         </Tbody>
         <Tfoot>
-        <Tr>
+          <Tr>
             <Th>ID</Th>
             <Th>Year</Th>
             <Th>Team</Th>
