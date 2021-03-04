@@ -178,10 +178,6 @@ input {
   margin-bottom: 10px;
 }
 
-.Swal {
-  background-color: #282c34;
-}
-
 body.swal2-shown > [aria-hidden="true"] {
   filter: blur(10px);
 }

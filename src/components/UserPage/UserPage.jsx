@@ -109,23 +109,32 @@ function UserPage(props) {
   const handleDelete = (id) => {
     Swal.fire({
       title: "Hope you made a good trade! Sure you want to delete it?",
+      icon: "warning",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Yes`,
       denyButtonText: `No`,
+      background: '#37474f',
       customClass: {
         cancelButton: 'order-1 right-gap',
         confirmButton: 'order-2',
         denyButton: 'order-3',
       }
-     
     })
       .then((result) => {
         if (result.isConfirmed) {
-          Swal.fire("aight, Jarvinski", '', 'success');
+          Swal.fire({
+            title:"aight, Jarvinski... deleted",
+            icon: 'success',
+            background: '#37474f',
+          });
           dispatch({ type: 'DELETE_PIN', payload: id })
         } else if(result.isDenied) {
-          Swal.fire('Good choice, Jarvinski', '', 'info')
+          Swal.fire({
+            title:'Good choice, Jarvinski',
+            icon: 'info',
+            background: '#37474f',
+          });
           return;
         }
       });
@@ -135,16 +144,31 @@ function UserPage(props) {
     Swal.fire({
       title: "This is a sweet pin, are you sure you want to give it up?",
       icon: "warning",
-      buttons: true,
-      dangerMode: false,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: `Yes`,
+      denyButtonText: `No`,
+      background: '#37474f',
+      customClass: {
+        cancelButton: 'order-1 right-gap',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+      }
     })
-      .then((yesTrade) => {
-        if (yesTrade) {
-          Swal.fire("You'll regret this, Jarvinski", {
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "You'll regret this, Jarvinski", 
             icon: "success",
+            background: '#37474f',
           });
           dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
-        } else {
+        } else if(result.isDenied) {
+          Swal.fire({
+            title:'Good choice, Jarvinski',
+            icon: 'info',
+            background: '#37474f',
+          });
           return;
         }
       });
@@ -239,7 +263,7 @@ function UserPage(props) {
             return (
               <ListItem key={pin.id}>
                 <ListIcon as={MdCheckCircle} color="green.500" />
-                {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()} {pin.user_id}
+                {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()}
               &nbsp;
 
                 <Button
