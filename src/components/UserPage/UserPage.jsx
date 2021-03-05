@@ -18,6 +18,7 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Heading,
   HStack,
   Input,
   List,
@@ -88,7 +89,7 @@ function UserPage(props) {
   }
 
   const handleSubmit = (event) => {
-    
+
     Swal.fire({
       text: 'Pin Added! Nice work, Jarvinski!',
       toast: true,
@@ -98,7 +99,7 @@ function UserPage(props) {
       timerProgressBar: true,
       showConfirmButton: false,
       background: '#61dafb',
-      
+
     }).then
     event.preventDefault();
     console.log(`Adding Pin`, { year, team, league, image_url, tradeable });
@@ -214,13 +215,17 @@ function UserPage(props) {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2> <LogOutButton className="btn" />
+      <h2>Welcome, {user.username}!</h2> &nbsp; <LogOutButton className="btn" />&nbsp;
+      &nbsp;
       <p>First Name: {user.first_name}</p>
       <p>Last Name: {user.last_name}</p>
       <p>Team: {user.team}</p>
       <p>League: {user.league}</p>
       <p>Jersey Number: {user.player_number}</p>
-
+      &nbsp;
+      <Heading as="h2" size="xl">
+        Click on an ID to view details
+      </Heading>
       <Divider orientation="horizontal" />
       <Table variant="simple"
         className="pinTable">
@@ -231,23 +236,27 @@ function UserPage(props) {
             <Th>Year</Th>
             <Th>Team</Th>
             <Th>League</Th>
-            <Th>Image Link</Th>
             <Th>Up for trade?</Th>
             <Th>Belongs to user </Th>
-
+            <Th>Delete</Th>
+            <Th>Toggle Trade Status</Th>
           </Tr>
         </Thead>
+
         <Tbody>
           {pins.map((pin, i) => {
             return (
-              <Tr key={i} cursor="pointer" onClick={() => setPinDetails(pin)}>
-                <Td >{pin.id}</Td>
+              <Tr key={i} cursor="pointer" >
+                <Td onClick={() => setPinDetails(pin)}>{pin.id}</Td>
                 <Td>{pin.year}</Td>
                 <Td>{pin.team}</Td>
                 <Td>{pin.league}</Td>
-                <Td>{pin.image_url}</Td>
                 <Td>{pin.tradeable.toString()}</Td>
                 <Td>{user.first_name}</Td>
+                <Td><Button
+                  className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;</Td>
+                <Td><Button
+                  className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button></Td>
               </Tr>
             );
           })}
@@ -258,28 +267,31 @@ function UserPage(props) {
             <Th>Year</Th>
             <Th>Team</Th>
             <Th>League</Th>
-            <Th>Image Link</Th>
             <Th>Up for trade?</Th>
             <Th>Belongs to user </Th>
-
+            <Th>Delete</Th>
+            <Th>Toggle Trade Status</Th>
           </Tr>
         </Tfoot>
       </Table>
 
       <Divider orientation="horizontal" />
-
+      &nbsp;
 
       <div className="pinList">
+      <Heading as="h2" size="xl">
+        Pin List
+      </Heading>
         <UnorderedList spacing={3}>
           {pins.map((pin) => {
             return (
               <ListItem key={pin.id}>
-                <ListIcon as={MdCheckCircle} color="green.500" />
+                {/* <ListIcon as={MdCheckCircle} color="green.500" /> */}
                 {pin.id} {pin.year} {pin.league} {pin.team} {pin.tradeable.toString()}
               &nbsp;
 
                 <Button
-                  className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;
+                  className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button>
                 <Button
                   className="Button" size="sm" onClick={() => handleTradeableUpdate(pin.id)}>Toggle Trade Status</Button>
               </ListItem>

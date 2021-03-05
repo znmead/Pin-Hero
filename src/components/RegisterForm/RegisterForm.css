@@ -14,3 +14,17 @@
     margin: 5px;
     margin-bottom: 10px;
   }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-color: #61dafb;
+    border-width: 1px 1px 3px;
+    border-radius: 8px;
+    background-color: #282c34;
+    color: #f8f8f8;
+    font-size: calc(1px + 2vmin);
+    font-family: monospace;
+    outline: 0;
+    cursor: pointer;
+  }

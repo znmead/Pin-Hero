@@ -68,7 +68,7 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-        &nbsp;<i className="fas fa-dragon">
+        &nbsp;<i className="fas fa-dragon">&nbsp;
           </i>&nbsp;&nbsp;<i className="fas fa-hockey-puck"></i>
            <Text
             bgGradient="linear(to-l, #7928CA,#FF0080)"
