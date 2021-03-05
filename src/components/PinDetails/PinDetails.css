@@ -22,7 +22,7 @@
       
     }
     table td {
-      border: 3px solid black; 
+      /* border: 3px solid black;  */
       color: #61dafb;
     }
     table tr:first-child td {
@@ -49,6 +49,7 @@
     font-family: monospace;
     margin: 0px;
     background-color: #61dafb;
+    
   
   }
   

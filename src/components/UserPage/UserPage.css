@@ -31,6 +31,7 @@ table td {
   color: #61dafb;
   cursor: pointer;
   cursor: auto;
+  background-color: white,
 }
 table tr:first-child td {
   border-top: 0;

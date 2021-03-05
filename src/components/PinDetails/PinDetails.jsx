@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import './PinDetails.css';
 import useReduxStore from "../../hooks/useReduxStore";
 import {
+    Badge,
+    Box,
     Button,
     ButtonGroup,
     Divider,
@@ -11,7 +13,9 @@ import {
     FormLabel,
     FormErrorMessage,
     FormHelperText,
+    Heading,
     HStack,
+    Image,
     Input,
     List,
     ListItem,
@@ -68,8 +72,10 @@ function PinDetails(props) {
 
     return (
         <>
-            <h1>Pin Details</h1>
-            <Table variant="simple"
+            <Heading as="h2" size="xl">
+                Pin Details
+            </Heading>
+            {/* <Table variant="simple"
                 className="pinTable">
                 <TableCaption>Pin Table</TableCaption>
                 <Thead>
@@ -78,7 +84,6 @@ function PinDetails(props) {
                         <Th>Year</Th>
                         <Th>Team</Th>
                         <Th>League</Th>
-                        <Th>Image Link</Th>
                         <Th>Up for trade?</Th>
                         <Th>Belongs to user </Th>
 
@@ -86,22 +91,54 @@ function PinDetails(props) {
                 </Thead>
                 <Tbody>
                     <Tr>
+                        <Td>{pin.id}</Td>
+                        <Td>{pin.year}</Td>
                         <Td>{pin.team}</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>
-                            <img src={pin.image_url} alt={pin.team} />
-                        </Td>
-                    </Tr>
-                    <Tr>
-                        <Td>
-                            {pin.league}
-                        </Td>
+                        <Td>{pin.league}</Td>
+                        <Td>{pin.tradeable.toString()}</Td>
+                        <Td>{user.first_name}</Td>
                     </Tr>
                 </Tbody>
-            </Table>
+                <Tfoot>
+                    <Tr>
+                        <Th>ID</Th>
+                        <Th>Year</Th>
+                        <Th>Team</Th>
+                        <Th>League</Th>
+                        <Th>Up for trade?</Th>
+                        <Th>Belongs to user </Th>
+                    </Tr>
+                </Tfoot>
+            </Table> */}
+            <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+                <Image src={pin.image_url} alt={pin.team} />
+                <Box p="6">
+                    <Box d="flex" alignItems="baseline">
+                        <Box
+                            color="gray.500"
+                            fontWeight="semibold"
+                            letterSpacing="wide"
+                            fontSize="xs"
+                            textTransform="uppercase"
+                            ml="2"
+                        >
+                            {pin.year}
+                        </Box>
+                    </Box>
+                    <Box
+                        mt="1"
+                        fontWeight="semibold"
+                        as="h4"
+                        lineHeight="tight"
+                        isTruncated
+                    >
+                        {pin.league}  &bull;  {pin.team} &nbsp; <Button onClick={() => history.push('/')}>Back to the Pin List</Button>
+                    </Box>
+                </Box>
+            </Box>
 
-            <Button onClick={() => history.push('/')}>Back to the Pin List</Button>
+            {/* <img src={pin.image_url} alt={pin.team} /> */}
+
             {/*Add a details edit function */}
 
         </>
