@@ -88,6 +88,15 @@ function UserPage(props) {
   }
 
   const handleSubmit = (event) => {
+    Swal.fire({
+      text: 'Pin Added! Nice work, Jarvinski!',
+      toast: true,
+      position: 'top-right',
+      icon: 'success',
+      timer: 2000,
+      timerProgressBar: true,
+
+    }).then
     event.preventDefault();
     console.log(`Adding Pin`, { year, team, league, image_url, tradeable });
     dispatch({

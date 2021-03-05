@@ -13,6 +13,11 @@ ul {
   align-items: left;
   justify-content: center;
   font-size: calc(1px + 2vmin);
+  /* color: #61dafb; */
+}
+
+li {
+
 }
 
 .pinTable {
