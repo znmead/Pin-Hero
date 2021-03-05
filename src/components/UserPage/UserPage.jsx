@@ -44,6 +44,7 @@ import {
   RadioGroup,
   Select,
   Stack,
+  Switch,
   Table,
   Thead,
   Tbody,
