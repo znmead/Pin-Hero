@@ -87,8 +87,8 @@ function Nav() {
 
         {user.id && (
           <>
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/gallery">
+              Gallery Page
             </Link>
             <LogOutButton className="navLink" />
           </>

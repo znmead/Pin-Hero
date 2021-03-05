@@ -343,14 +343,14 @@ function UserPage(props) {
               </FormControl>
               <span></span>
               &nbsp;
-              <FormControl id="url"
+              <FormControl id="image"
                 type="text"
                 value={image_url}
                 onChange={(event) => setImage_Url(event.target.value)}
 
               >
                 <FormLabel>Image Link</FormLabel>
-                <Input type="url" />
+                <Input type="text" />
                 <FormHelperText>Upload a picture?</FormHelperText>
               </FormControl>
               <span></span>
