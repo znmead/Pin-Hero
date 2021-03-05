@@ -68,15 +68,17 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-        &nbsp;<i className="fas fa-dragon">&nbsp;
+          &nbsp;<i className="fas fa-dragon">&nbsp;
           </i>&nbsp;&nbsp;<i className="fas fa-hockey-puck"></i>
-           <Text
+          <Text
+            fontSize="4xl"
             bgGradient="linear(to-l, #7928CA,#FF0080)"
             bgClip="text"
+
           >
             &nbsp;Pin Hero</Text>&nbsp;
             <i className="fas fa-hockey-puck">
-            </i>&nbsp;&nbsp; <i className="fas fa-dragon fa-flip-horizontal"></i>
+          </i>&nbsp;&nbsp; <i className="fas fa-dragon fa-flip-horizontal"></i>
         </h2>
 
       </Link>
@@ -88,7 +90,7 @@ function Nav() {
         {user.id && (
           <>
             <Link className="navLink" to="/gallery">
-              Gallery Page
+              Gallery
             </Link>
             <LogOutButton className="navLink" />
           </>

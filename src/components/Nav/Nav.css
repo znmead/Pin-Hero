@@ -23,8 +23,9 @@
 
 .nav-title:hover {
   background-color: #61dafb;
-  opacity: 50%;
+  opacity: 25%;
   color: #282c34;
+  
 }
 
 
@@ -46,7 +47,8 @@
 
 .navLink:hover {
   background-color: #61dafb;
-  opacity: 50%;
+  opacity: 25%;
   color: #282c34;
+  border-radius: 80%;
 }
 
