@@ -88,14 +88,17 @@ function UserPage(props) {
   }
 
   const handleSubmit = (event) => {
+    
     Swal.fire({
       text: 'Pin Added! Nice work, Jarvinski!',
       toast: true,
       position: 'top-right',
       icon: 'success',
-      timer: 2000,
+      timer: 2500,
       timerProgressBar: true,
-
+      showConfirmButton: false,
+      background: '#61dafb',
+      
     }).then
     event.preventDefault();
     console.log(`Adding Pin`, { year, team, league, image_url, tradeable });
@@ -133,14 +136,14 @@ function UserPage(props) {
       .then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
-            title:"aight, Jarvinski... deleted",
+            title: "aight, Jarvinski... deleted",
             icon: 'success',
             background: '#37474f',
           });
           dispatch({ type: 'DELETE_PIN', payload: id })
-        } else if(result.isDenied) {
+        } else if (result.isDenied) {
           Swal.fire({
-            title:'Good choice, Jarvinski',
+            title: 'Good choice, Jarvinski',
             icon: 'info',
             background: '#37474f',
           });
@@ -167,14 +170,14 @@ function UserPage(props) {
       .then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
-            title: "You'll regret this, Jarvinski", 
+            title: "You'll regret this, Jarvinski",
             icon: "success",
             background: '#37474f',
           });
           dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
-        } else if(result.isDenied) {
+        } else if (result.isDenied) {
           Swal.fire({
-            title:'Good choice, Jarvinski',
+            title: 'Good choice, Jarvinski',
             icon: 'info',
             background: '#37474f',
           });
