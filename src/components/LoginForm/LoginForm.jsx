@@ -104,7 +104,7 @@ function LoginForm() {
           <Input
             type="password"
             name="password"
-            required
+            isRequired
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
