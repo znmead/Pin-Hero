@@ -9,6 +9,9 @@ import useSound from 'use-sound';
 import './UserPage.css';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import * as filestack from 'filestack-js';
+const client = filestack.init('ABd2p5jrFRtGzGAoRoxUgz');
+// client.picker().open();
 
 import {
   Button,
@@ -91,7 +94,7 @@ function UserPage(props) {
   }
 
   const handleSubmit = (event) => {
-    <Progress size="xs" isIndeterminate />
+    // client.picker().open();
     Swal.fire({
       text: 'Pin Added! Nice work, Jarvinski!',
       toast: true,
@@ -114,7 +117,7 @@ function UserPage(props) {
         image_url: image_url,
         tradeable: tradeable
       }
-      
+
     });
     setPinToggle(false);
 
@@ -218,110 +221,114 @@ function UserPage(props) {
   return (
     <div className="container">
       <Text
-       fontSize="4xl"
-       bgGradient="linear(to-l, #7928CA,#FF0080)"
-       bgClip="text">Welcome, {user.username}!</Text>
-      
-      
+        fontSize="4xl"
+        bgGradient="linear(to-l, #7928CA,#FF0080)"
+        bgClip="text">Welcome, {user.username}!</Text>
+
+
       <p>Last Name: {user.last_name}</p>
       <p>Team: {user.team}</p>
       <p>League: {user.league}</p>
       <p>Jersey Number: {user.player_number}</p>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      
+
       <Heading as="h2" size="xl">
         Click on an ID to view details
       </Heading>
       <br></br>
       {addPinToggle ? (
-          <>
-            <form className="formPanel" onSubmit={handleSubmit}>
-              <FormControl id="year"
-                type="text"
-                value={year}
-                defaultValue={1982}
-                onChange={(event) => setYear(event.target.value)}
-                isRequired>
-                <FormLabel>Year</FormLabel>
-                <Input type="text" />
-                {/* <FormHelperText>1982?</FormHelperText> */}
-              </FormControl>
-              <span></span>
+        <>
+          <form className="formPanel" onSubmit={handleSubmit}>
+            <FormControl id="year"
+              type="text"
+              value={year}
+              defaultValue={1982}
+              onChange={(event) => setYear(event.target.value)}
+              isRequired>
+              <FormLabel>Year</FormLabel>
+              <Input type="text" />
+              {/* <FormHelperText>1982?</FormHelperText> */}
+            </FormControl>
+            <span></span>
               &nbsp;
               <FormControl id="team"
-                placeholder="Team"
-                value={team}
-                onChange={(event) => setTeam(event.target.value)}
-                isRequired
-              >
-                <FormLabel>Team</FormLabel>
-                <Input type="text" />
-                <FormHelperText>Anyone but the Spuds</FormHelperText>
-              </FormControl>
-              <span></span>
+              placeholder="Team"
+              value={team}
+              onChange={(event) => setTeam(event.target.value)}
+              isRequired
+            >
+              <FormLabel>Team</FormLabel>
+              <Input type="text" />
+              {/* <FormHelperText>Anyone but the Spuds</FormHelperText> */}
+            </FormControl>
+            <span></span>
               &nbsp;
               <FormControl id="league"
-                type="text"
-                value={league}
-                onChange={(event) => setLeague(event.target.value)}
-                isRequired
-              >
-                <FormLabel>League</FormLabel>
-                <Select placeholder="Select League">
-                  <option>Termites</option>
-                  <option>Mites</option>
-                  <option>Squirt</option>
-                  <option>PeeWee</option>
-                  <option>Bantam</option>
-                  <option>NHL</option>
-                  <option>Other</option>
-                </Select>
-                {/* <FormHelperText>PeeWee much?</FormHelperText> */}
-              </FormControl>
-              <span></span>
+              type="text"
+              value={league}
+              onChange={(event) => setLeague(event.target.value)}
+              isRequired
+            >
+              <FormLabel>League</FormLabel>
+              <Select placeholder="Select League">
+                <option>Termites</option>
+                <option>Mites</option>
+                <option>Squirt</option>
+                <option>PeeWee</option>
+                <option>Bantam</option>
+                <option>NHL</option>
+                <option>Other</option>
+              </Select>
+              {/* <FormHelperText>PeeWee much?</FormHelperText> */}
+            </FormControl>
+            <span></span>
               &nbsp;
               <FormControl id="image"
-                type="text"
-                value={image_url}
-                onChange={(event) => setImage_Url(event.target.value)}
+              type="text"
+              value={image_url}
+              onChange={(event) => setImage_Url(event.target.value)}
 
-              >
-                <FormLabel>Image Link</FormLabel>
-                <Input type="text" />
-                <FormHelperText>Upload a picture?</FormHelperText>
-              </FormControl>
-              <span></span>
+            >
+              <FormLabel>Image Link</FormLabel>
+              <Input type="text" />
+              {/* client.picker().open(); */}
+              <FormHelperText >Upload a picture?</FormHelperText>
+            </FormControl>
+            <br></br>
+            <Button className="Button" type="submit">Upload a picture?</Button>
+            <br></br>
+            <span></span>
               &nbsp;
               <FormControl as="fieldset"
-                type="text"
-                value={tradeable}
-                onChange={(event) => setTradeable(event.target.value)}
-              >
-                <FormLabel as="legend">Up for trade?</FormLabel>
-                <RadioGroup defaultValue="FALSE">
-                  <HStack spacing="24px">
-                    <Radio value="TRUE">Yes</Radio>
-                    <Radio value="FALSE">No</Radio>
-                  </HStack>
-                </RadioGroup>
-                {/* <FormHelperText>Choose wisely, Jarvinski</FormHelperText> */}
-              </FormControl>
+              type="text"
+              value={tradeable}
+              onChange={(event) => setTradeable(event.target.value)}
+            >
+              <FormLabel as="legend">Up for trade?</FormLabel>
+              <RadioGroup defaultValue="FALSE">
+                <HStack spacing="24px">
+                  <Radio value="TRUE">Yes</Radio>
+                  <Radio value="FALSE">No</Radio>
+                </HStack>
+              </RadioGroup>
+              {/* <FormHelperText>Choose wisely, Jarvinski</FormHelperText> */}
+            </FormControl>
               &nbsp;
               <span></span>
-              <ButtonGroup variant="outline" spacing="40">
-                <Button className="Button" type="cancel"
-                  onClick={() => setPinToggle(false)}>Cancel
-              </Button>
+            <ButtonGroup variant="outline" spacing="40">
+              <Button className="Button" type="cancel"
+                onClick={() => setPinToggle(false)}>Cancel
+                </Button>
               &nbsp;
                 <Button className="Button" type="submit">Save Pin </Button>
-              </ButtonGroup>
-            </form>
-          </>
-        ) : (
-            <button
-              className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
-          )} <br></br>
-          <br></br>
+            </ButtonGroup>
+          </form>
+        </>
+      ) : (
+          <button
+            className="btn" onClick={() => setPinToggle(true)}>Add Pin</button>
+        )} <br></br>
+      <br></br>
       <Divider orientation="horizontal" />
       <Table variant="simple"
         className="pinTable">
@@ -340,7 +347,7 @@ function UserPage(props) {
         </Thead>
 
         <Tbody>
-          
+
           {pins.map((pin, i) => {
             const yes = true;
             const no = false;
@@ -378,8 +385,8 @@ function UserPage(props) {
       &nbsp;
 
       <div className="pinList">
-      <Heading as="h2" size="xl">
-        Pin List
+        <Heading as="h2" size="xl">
+          Pin List
       </Heading>
         <UnorderedList spacing={3}>
           {pins.map((pin) => {
@@ -400,7 +407,7 @@ function UserPage(props) {
         <span></span>
               &nbsp;
               <Divider orientation="horizontal" />
-        
+
       </div>
     </div >
   );
