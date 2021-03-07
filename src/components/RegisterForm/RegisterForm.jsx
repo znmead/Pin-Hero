@@ -66,7 +66,8 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Need an account? Register here!</h2>
+      <h2>Need an account?</h2>
+      <br></br>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -88,6 +89,7 @@ function RegisterForm() {
         <FormHelperText>Username</FormHelperText>
         </FormControl>
       </div>
+      <br></br>
       <div>
         <FormControl
         type="password"
@@ -103,6 +105,7 @@ function RegisterForm() {
         <FormHelperText>Password</FormHelperText>
         </FormControl>
       </div>
+      <br></br>
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
