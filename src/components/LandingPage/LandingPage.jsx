@@ -17,15 +17,19 @@ function LandingPage() {
     <div className="container">
       <h1>{heading}</h1>
       <br></br>
+      {/*  */}
       <div className="grid">
         <div className="grid-col grid-col_8">
           <h2>Your ultimate hockey pin trading location.</h2>
         </div>
+        {/* <div>
+        <img src="images/outdoorRink.jpg" id="odr" alt="odr"></img>
+      </div> */}
         <div className="grid-col grid-col_4">
           <RegisterForm />
-
           <center>
             <h4>Already a Member?</h4>
+            <br></br>
             <button className="btn btn_sizeSm" onClick={onLogin}>
               Login
             </button>

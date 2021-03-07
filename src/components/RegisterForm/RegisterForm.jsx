@@ -78,11 +78,13 @@ function RegisterForm() {
           type="text"
           name="username"
           value={username}
-          required
+          
           onChange={(event) => setUsername(event.target.value)}>
 
         
-        <FormLabel htmlFor="username">
+        <FormLabel 
+        isRequired
+        htmlFor="username">
           Username:
           <Input type="text" />
         </FormLabel>
@@ -98,7 +100,9 @@ function RegisterForm() {
         required
         onChange={(event) => setPassword(event.target.value)}
         >
-        <FormLabel htmlFor="password">
+        <FormLabel 
+        isRequired
+        htmlFor="password">
           Password:
           <Input type="text" />
         </FormLabel>
