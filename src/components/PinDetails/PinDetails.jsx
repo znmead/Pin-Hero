@@ -75,6 +75,8 @@ function PinDetails(props) {
             <Heading as="h2" size="xl">
                 Pin Details
             </Heading>
+            <br></br>
+            <br></br>
             {/* <Table variant="simple"
                 className="pinTable">
                 <TableCaption>Pin Table</TableCaption>
