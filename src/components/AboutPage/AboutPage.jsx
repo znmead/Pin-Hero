@@ -10,33 +10,18 @@ function AboutPage() {
     <div className="container">
       <div>
       <p>
-            >>> import this <br></br>
+            This app was made with the following technologies: <br></br>
 
-            The Zen of Python by Tim Peters
-
+            PERN Stack: 
+            Postgresql - Backend database
+            Express - Backend web application framework for Node 
+            React - JavaScript library for frontend user interfaces
+            Node.js - Backend JavaScript runtime environment
+            </p>
             <hr></hr>
             <br></br>
 
-            Beautiful is better than ugly.<br></br>
-            Explicit is better than implicit.<br></br>
-            Simple is better than complex.<br></br>
-            Complex is better than complicated.<br></br>
-            Flat is better than nested.<br></br>
-            Sparse is better than dense.<br></br>
-            Readability counts.<br></br>
-            Special cases aren't special enough to break the rules.<br></br>
-            Although practicality beats purity.<br></br>
-            Errors should never pass silently.<br></br>
-            Unless explicitly silenced.<br></br>
-            In the face of ambiguity, refuse the temptation to guess.<br></br>
-            There should be one-- and preferably only one --obvious way to do it.<br></br>
-            Although that way may not be obvious at first unless you're Dutch.<br></br>
-            Now is better than never.<br></br>
-            Although never is often better than *right* now.<br></br>
-            If the implementation is hard to explain, it's a bad idea.<br></br>
-            If the implementation is easy to explain, it may be a good idea.<br></br>
-            Namespaces are one honking great idea -- let's do more of those!<br></br>
-          </p>
+            
 
           <br></br>
 
