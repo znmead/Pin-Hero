@@ -68,7 +68,7 @@ function Nav() {
     <div className="nav">
       <Link to="/home">
         <h2 className="nav-title">
-          &nbsp;<i className="fas fa-dragon">&nbsp;
+          &nbsp;&nbsp;&nbsp;<i className="fas fa-dragon">&nbsp;
           </i>&nbsp;&nbsp;<i className="fas fa-hockey-puck"></i>
           <Text
             fontSize="4xl"
@@ -77,7 +77,7 @@ function Nav() {
 
           >
             &nbsp;Pin Hero</Text>&nbsp;
-            <i className="fas fa-hockey-puck">
+            &nbsp;<i className="fas fa-hockey-puck">
           </i>&nbsp;&nbsp; <i className="fas fa-dragon fa-flip-horizontal"></i>
         </h2>
 
