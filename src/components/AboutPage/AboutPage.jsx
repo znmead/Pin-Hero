@@ -12,11 +12,21 @@ function AboutPage() {
       <p>
             This app was made with the following technologies: <br></br>
 
-            PERN Stack: 
-            Postgresql - Backend database
-            Express - Backend web application framework for Node 
-            React - JavaScript library for frontend user interfaces
-            Node.js - Backend JavaScript runtime environment
+            <br></br>
+            
+            PERN Stack: <br></br>
+            Postgresql - Backend database <br></br>
+            Express - Backend web application framework for Node <br></br>
+            React - JavaScript library for frontend user interfaces <br></br>
+            Node.js - Backend JavaScript runtime environment <br></br>
+
+            <br></br>
+
+            Some assistive technologies used: <br></br>
+
+            FileStack.js - image and files import handler <br></br>
+            Chakra UI - Component library to make React beautiful <br></br>
+
             </p>
             <hr></hr>
             <br></br>
