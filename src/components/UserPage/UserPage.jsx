@@ -357,7 +357,8 @@ function UserPage(props) {
                 <Td>{pin.year}</Td>
                 <Td>{pin.team}</Td>
                 <Td>{pin.league}</Td>
-                <Td>{pin.tradeable.toString() == true ? "Yes" : "No" }</Td>
+                {/* == false ? "No" : "Yes" */}
+                <Td>{pin.tradeable.toString() }</Td>
                 <Td>{user.first_name}</Td>
                 <Td><Button
                   className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;</Td>
