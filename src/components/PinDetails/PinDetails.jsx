@@ -125,6 +125,7 @@ function PinDetails(props) {
                             ml="2"
                         >
                             {pin.year}
+                            {pin.tradeable.toString() == true ? "Yes" : "No"}
                         </Box>
                     </Box>
                     <Box

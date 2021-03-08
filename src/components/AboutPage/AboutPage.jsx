@@ -64,10 +64,12 @@ function AboutPage() {
             Node.js - Backend JavaScript runtime environment <br></br>
 
             <br></br>
+            <br></br>
 
             <Heading as="h1" size="xl">Assistive technologies</Heading><br></br>
 
-            FileStack.js - image and files import handler <br></br>
+            Redux - React state management container <br></br>
+            FileStack.js - image and files import API <br></br>
             Chakra UI - Component library to make React beautiful <br></br>
 
             </p>
@@ -85,9 +87,10 @@ function AboutPage() {
             <br></br>
 
             NHL api integration for news/scores<br></br>
-            Build small things that work<br></br>
-            and glue them together to make big things.<br></br>
-            Clear is better than clever,<br></br>
+            Web scraper for local hockey schdules<br></br>
+            Interactive trading capability<br></br>
+            Dark mode<br></br>
+            Lifetime player stats<br></br>
             
           </p>
 

@@ -94,16 +94,16 @@ function UserPage(props) {
   }
 
   const handleSubmit = (event) => {
-    // client.picker().open();
+    client.picker().open();
     Swal.fire({
-      text: 'Pin Added! Nice work, Jarvinski!',
+      text: 'Pin Added! Nice work!',
       toast: true,
       position: 'top-right',
       icon: 'success',
       timer: 2500,
       timerProgressBar: true,
       showConfirmButton: false,
-      background: '#61dafb',
+      background: 'white',
 
     }).then
     event.preventDefault();
@@ -126,13 +126,13 @@ function UserPage(props) {
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: "Hope you made a good trade! Sure you want to delete it?",
+      title: "Sure you want to delete this?",
       icon: "warning",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Yes`,
       denyButtonText: `No`,
-      background: '#37474f',
+      background: 'white',
       customClass: {
         cancelButton: 'order-1 right-gap',
         confirmButton: 'order-2',
@@ -142,16 +142,16 @@ function UserPage(props) {
       .then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
-            title: "aight, Jarvinski... deleted",
+            title: "Ok, pin deleted",
             icon: 'success',
             background: '#37474f',
           });
           dispatch({ type: 'DELETE_PIN', payload: id })
         } else if (result.isDenied) {
           Swal.fire({
-            title: 'Good choice, Jarvinski',
+            title: 'Good choice!',
             icon: 'info',
-            background: '#37474f',
+            background: '#white',
           });
           return;
         }
@@ -160,13 +160,13 @@ function UserPage(props) {
 
   const handleTradeableUpdate = (id) => {
     Swal.fire({
-      title: "This is a sweet pin, are you sure you want to give it up?",
+      title: "Sure you want to give this one up?",
       icon: "warning",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Yes`,
       denyButtonText: `No`,
-      background: '#37474f',
+      background: 'white',
       customClass: {
         cancelButton: 'order-1 right-gap',
         confirmButton: 'order-2',
@@ -176,16 +176,16 @@ function UserPage(props) {
       .then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
-            title: "You'll regret this, Jarvinski",
+            title: "Ok, updated!",
             icon: "success",
             background: '#37474f',
           });
           dispatch({ type: 'UPDATE_PIN_TRADEABLE', payload: { tradeable: tradeable, id: id } });
         } else if (result.isDenied) {
           Swal.fire({
-            title: 'Good choice, Jarvinski',
+            title: 'Good choice!',
             icon: 'info',
-            background: '#37474f',
+            background: 'white',
           });
           return;
         }
@@ -291,11 +291,11 @@ function UserPage(props) {
             >
               <FormLabel>Image Link</FormLabel>
               <Input type="text" />
-              {/* client.picker().open(); */}
-              <FormHelperText >Upload a picture?</FormHelperText>
+              
+              <FormHelperText>Upload a picture?</FormHelperText>
             </FormControl>
-            <br></br>
-            <Button className="Button" type="submit">Upload a picture?</Button>
+            {/* <br></br> */}
+            {/* <Button className="Button" type="submit">Upload a picture?</Button> */}
             <br></br>
             <span></span>
               &nbsp;
@@ -357,7 +357,7 @@ function UserPage(props) {
                 <Td>{pin.year}</Td>
                 <Td>{pin.team}</Td>
                 <Td>{pin.league}</Td>
-                <Td>{pin.tradeable.toString()}</Td>
+                <Td>{pin.tradeable.toString() == true ? "Yes" : "No" }</Td>
                 <Td>{user.first_name}</Td>
                 <Td><Button
                   className="Button" size="sm" onClick={() => handleDelete(pin.id)}>Delete</Button> &nbsp;</Td>
@@ -415,6 +415,8 @@ function UserPage(props) {
 
 // this allows us to use <App /> in index.js
 export default UserPage;
+
+// end UserPage;
 
 // {updatePinToggle ? (
 //   <>
