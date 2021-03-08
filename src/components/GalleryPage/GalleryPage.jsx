@@ -17,6 +17,7 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Heading,
   HStack,
   Input,
   List,
@@ -78,48 +79,35 @@ function GalleryPage() {
 
   return (
     <div className="container">
-      <p>import this
-
-      The Zen of Python, by Tim Peters
-      </p>
-
+      <Heading as="h1" size="2xl">Pin Gallery</Heading>
+      <br></br>
+      <Heading as="h2" size="1xl">Click a pin to view details about it.</Heading>
+      <br></br>
       <hr></hr>
+      <br></br>
 
       <p>
-      Beautiful is better than ugly.
-      Explicit is better than implicit.
-      Simple is better than complex.
-      Complex is better than complicated.
-      Flat is better than nested.
-      Sparse is better than dense.
-      Readability counts.
-      Special cases aren't special enough to break the rules.
-      Although practicality beats purity.
-      Errors should never pass silently.
-      Unless explicitly silenced.
-      In the face of ambiguity, refuse the temptation to guess.
-      There should be one-- and preferably only one --obvious way to do it.
-      Although that way may not be obvious at first unless you're Dutch.
-      Now is better than never.
-      Although never is often better than *right* now.
-      If the implementation is hard to explain, it's a bad idea.
-      If the implementation is easy to explain, it may be a good idea.
-      Namespaces are one honking great idea -- let's do more of those!
+
       </p>
       <main>
-            <h1>Pin Gallery</h1>
-            <h3>Click a pin to view details about it.</h3>
-            <section className="pins">
-                {pins.map(pin => {
-                    return (
-                        <div key={pin.id} >
-                            <h3>{pin.team}</h3>
-                            <img src={pin.image_url} alt={pin.team} onClick={() => setPinDetails(pin)}/> 
-                        </div>
-                    );
-                })}
-            </section>
-        </main>
+        
+        <section className="pins">
+          {pins.map(pin => {
+            return (
+              <div key={pin.id} >
+                <Heading as="h2" size="1xl">{pin.year} {pin.league} {pin.team}</Heading>
+                <br></br>
+                <img src={pin.image_url} alt={pin.team} onClick={() => setPinDetails(pin)} />
+                <br></br>
+                <br></br>
+                <hr></hr>
+                <br></br>
+              </div>
+              
+            );
+          })}
+        </section>
+      </main>
     </div>
   );
 }
