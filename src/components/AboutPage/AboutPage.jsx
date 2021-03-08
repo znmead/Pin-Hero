@@ -81,7 +81,7 @@ function AboutPage() {
           <p>
           <Heading as="h1" size="xl">Future features</Heading>
 
-            <hr></hr>
+            {/* <hr></hr> */}
             <br></br>
 
             NHL api integration for news/scores<br></br>
